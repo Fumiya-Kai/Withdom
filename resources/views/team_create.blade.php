@@ -14,15 +14,16 @@
       <label for="description">説明</label>
       <textarea name="description" id="description" cols="30" rows="10" class="form-control" placeholder="チームの説明"></textarea>
     </div>
-    <div class="w-50 mt-4">
+    <div class="first-members w-50 mt-4">
       <label for="email" class="form-label">ユーザー招待</label>
-      <input type="email" id="email" name="email" class="form-control" placeholder="招待するユーザーのメールアドレスを入力">
+      <input type="email" id="email" name="emails[0]" class="form-control" placeholder="招待するユーザーのメールアドレスを入力">
     </div>
     <div class="mt-2">
-      <button type="button" class="btn btn-success py-0 px-1">
+      <button type="button" class="btn-add-form btn btn-success py-0 px-1">
         <img src="https://icongr.am/material/plus.svg?size=30&color=ffffff" alt="招待メンバー追加">
       </button>
     </div>
   </form>
 </div>
+<script src="{{ mix('js/addForm.js') }}"></script>
 @endsection

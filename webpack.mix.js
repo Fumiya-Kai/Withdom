@@ -12,8 +12,9 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .sourceMaps()
-    .autoload({
-      "jquery": ['$', 'window.jQuery'],
-    });;
+   .js('resources/js/addForm.js', 'public/js')
+   .sass('resources/sass/app.scss', 'public/css')
+   .sourceMaps()
+   .autoload({
+     "jquery": ['$', 'window.jQuery'],
+   });
