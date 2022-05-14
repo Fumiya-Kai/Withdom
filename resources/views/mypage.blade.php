@@ -2,17 +2,14 @@
 
 @section('content')
 <div class="container mt-5 pt-5">
-  <div class="row">
+  <div class="row pb-3 border-bottom border-dark">
     <img src="https://icongr.am/fontawesome/user-circle.svg?size=140&color=70e6a9" class="w-auto" alt="ユーザーアイコン">
     <div class="col d-flex align-items-center display-3">UserName</div>
-  </div>
-  <div class="row mb-4">
-    <div class="d-flex justify-content-end">
+    <div class="col-4 d-flex align-items-end">
       <a href="" type="button" class="btn btn-warning btn-lg">チーム作成</a>
-      <div class="col-2"></div>
     </div>
   </div>
-  <div class="row">
+  <div class="row mt-5">
     <div class="h1">チーム</div>
   </div>
   <div class="row row-cols-1 row-cols-md-4 mb-4">
