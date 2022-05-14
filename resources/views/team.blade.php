@@ -5,7 +5,7 @@
   <div class="row pb-3 border-bottom border-dark">
     <img src="https://icongr.am/fontawesome/users.svg?size=140&color=5f5f5f" class="w-auto" alt="チームアイコン">
     <div class="col d-flex align-items-center display-3">TeamName</div>
-    <div class="col gap-3 d-flex align-items-end">
+    <div class="col gap-3 d-flex align-items-end justify-content-end">
       <a href="" type="button" class="btn btn-warning btn-lg col-4">
         <img src="https://icongr.am/fontawesome/user-plus.svg?size=30&color=currentColor" alt="メンバー追加アイコン">
         メンバー招待
