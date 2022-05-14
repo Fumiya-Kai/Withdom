@@ -21,6 +21,10 @@ Route::get('/teams/{teamId}', function () {
     return view('team');
 });
 
+Route::get('/team_create', function () {
+    return view('team_create');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
