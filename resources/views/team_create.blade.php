@@ -7,21 +7,24 @@
   </div>
   <form action="" method="post" class="mt-5">
     <div class="w-50">
-      <label for="name" class="form-label">チーム名</label>
+      <label for="name" class="form-label h5">チーム名</label>
       <input type="text" id="name" name="name" class="form-control" placeholder="チーム名を入力">
     </div>
     <div class="w-50 mt-4">
-      <label for="description">説明</label>
+      <label for="description" class="form-label h5">説明</label>
       <textarea name="description" id="description" cols="30" rows="10" class="form-control" placeholder="チームの説明"></textarea>
     </div>
     <div class="first-members w-50 mt-4">
-      <label for="email" class="form-label">ユーザー招待</label>
+      <label for="email" class="form-label h5">ユーザー招待</label>
       <input type="email" id="email" name="emails[0]" class="form-control" placeholder="招待するユーザーのメールアドレスを入力">
     </div>
     <div class="mt-2">
       <button type="button" class="btn-add-form btn btn-success py-0 px-1">
         <img src="https://icongr.am/material/plus.svg?size=30&color=ffffff" alt="招待メンバー追加">
       </button>
+    </div>
+    <div class="row mt-3">
+      <button class="submit btn btn-warning col-1 offset-5">作成</button>
     </div>
   </form>
 </div>
