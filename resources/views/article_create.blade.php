@@ -66,9 +66,5 @@
     </div>
   </form>
 </div>
-<style>
-  .form-control:focus {
-    box-shadow: none;
-  }
-</style>
+<script src="{{ mix('js/comboBox.js') }}"></script>
 @endsection
