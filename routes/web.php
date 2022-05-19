@@ -21,8 +21,12 @@ Route::get('/teams/{teamId}', function () {
     return view('team');
 });
 
-Route::get('/team_create', function () {
+Route::get('/team/create', function () {
     return view('team_create');
+});
+
+Route::get('/article/create', function () {
+    return view('article_create');
 });
 
 Auth::routes();
