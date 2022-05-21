@@ -1,25 +1,15 @@
 $(function(){
+  // カテゴリーフォーム部分をクリックするとフォーカスが当たる
   $('.category-form').on('click', function(){
     $('.category-input').focus();
   })
 
+  // フォーカスが当たるとリスト表示
   $('.category-input').on('focusin', function(){
     $('.category-list').show();
   });
 
-  // $('.category-input').on('click', function(e){
-  //   e.stopPropagation();
-  // });
-
-  // $('.category-input').on('focusout', function(){
-  //   $('.category-item').on('click', function(){
-  //     $('.category-input').focus();
-  //     $(this).children('.category-checkbox').prop('checked', true).change();
-  //     return;
-  //   })
-  //   $('.category-list').hide();
-  // });
-
+  // リストクリック時の挙動
   $(document).on('click',function(e) {
     if(!$(e.target).closest('.category-list').length && !$(e.target).closest('.category-input').length && !$(e.target).closest('.category-form').length) {
       $('.category-list').hide();
@@ -32,6 +22,7 @@ $(function(){
     }
   });
 
+  // チェックボックスチェック操作の挙動
   $('.category-checkbox').change(function(){
     if($(this).prop('checked')) {
       let categoryName = $(this).val();
@@ -44,6 +35,7 @@ $(function(){
     }
   })
 
+  // 入力後のEnter時の挙動
   $('.category-input').on('keypress', function(e){
     if(e.key === 'Enter'){
       let categoryName = $('.category-input').val();
@@ -54,12 +46,14 @@ $(function(){
     };
   })
 
+  // backspaceによるタグ削除
   $('.category-input').on('keydown', function(e){
     if(e.key === 'Backspace' && $(this).get(0).selectionStart === 0){
       $('.added-category-badge').last().remove();
     };
   })
 
+  // タグ作成の関数
   function createBadge(categoryName, categoryId = null) {
     return `<div class="added-category-badge badge rounded-pill bg-secondary bg-opacity-25 me-1 text-dark" id="${categoryId}">${categoryName}</div>`;
   }
