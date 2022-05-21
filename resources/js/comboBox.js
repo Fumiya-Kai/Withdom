@@ -23,9 +23,12 @@ $(function(){
   $(document).on('click',function(e) {
     if(!$(e.target).closest('.category-list').length && !$(e.target).closest('.category-input').length && !$(e.target).closest('.category-form').length) {
       $('.category-list').hide();
+    } else if($(e.target).closest('.category-list').length) {
+      let statusOfCheckbox = $(e.target).children('.category-checkbox').prop('checked');
+      $('.category-input').focus();
+      $(e.target).children('.category-checkbox').prop('checked', !statusOfCheckbox).change();
     } else {
       $('.category-input').focus();
-      $(this).children('.category-checkbox').prop('checked', true).change();
     }
   });
 
