@@ -1,6 +1,3 @@
-// import { marked } from 'marked';
-// import marked from 'marked';
-// import hljs from 'highlight.js';
 const { marked } = require('marked')
 const highlight = require('highlight.js')
 
@@ -18,16 +15,7 @@ $(function(){
   // デフォルトのテキストエリアの高さ
   let oldHeight = $('.article-content').innerHeight();
 
-  // // markedにhighlightを設定
-  // marked.setOptions({
-  //   // code要素にdefaultで付くlangage-を削除
-  //   langPrefix: '',
-  //   // highlightjsを使用したハイライト処理を追加
-  //   highlight: function (code, lang) {
-  //     return highlight.highlightAuto(code, [lang]).value
-  //   }
-  // });
-
+  // シンタックスハイライトの設定
   marked.setOptions({
     highlight: code => {
       return highlight.highlightAuto(code).value
