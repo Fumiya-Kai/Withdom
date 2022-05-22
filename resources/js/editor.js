@@ -1,3 +1,5 @@
+import { marked } from 'marked';
+
 $(function(){
   $('.nav-link').on('click', function(){
     $('.nav-link.active').removeClass('active');
@@ -14,5 +16,8 @@ $(function(){
     $('.article-content').innerHeight(oldHeight);
     let height = $(this).get(0).scrollHeight;
     $('.article-content').innerHeight(height);
+
+    let compiledMarkdown = marked($(this).val());
+    $('.preview').html(compiledMarkdown);
   });
 })

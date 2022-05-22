@@ -56,8 +56,7 @@
         <div id="editor" class="tab-pane active">
           <textarea name="content" id="content" class="article-content form-control border-top-0 rounded-0" style="min-height: 300px;"></textarea>
         </div>
-        <div id="preview" class="tab-pane">
-          <p>コンテンツ2</p>
+        <div id="preview" class="preview tab-pane">
         </div>
       </div>
     </div>
