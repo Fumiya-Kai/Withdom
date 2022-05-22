@@ -42,19 +42,19 @@
       <label for="abstract" class="form-label h5">要約</label>
       <input type="text" id="abstract" name="abstract" class="form-control" placeholder="記事の要約を入力">
     </div>
-    <div class="w-50 mt-4">
+    <div class="w-75 mt-4">
       <label for="content" class="form-label h5">本文</label>
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a href="#editor" class="nav-link active" data-bs-toggle="tab">マークダウン</a>
+          <a href="#editor" class="nav-link active" data-tab-id="#editor" data-bs-toggle="tab">マークダウン</a>
         </li>
         <li class="nav-item">
-          <a href="#preview" class="nav-link" data-bs-toggle="tab">プレビュー</a>
+          <a href="#preview" class="nav-link" data-tab-id="#preview"data-bs-toggle="tab">プレビュー</a>
         </li>
       </ul>
       <div class="tab-content">
         <div id="editor" class="tab-pane active">
-          <textarea name="content" id="content" class="form-control border-top-0 rounded-0">コンテンツ1</textarea>
+          <textarea name="content" id="content" class="article-content form-control border-top-0 rounded-0" style="min-height: 300px;"></textarea>
         </div>
         <div id="preview" class="tab-pane">
           <p>コンテンツ2</p>
@@ -67,4 +67,5 @@
   </form>
 </div>
 <script src="{{ mix('js/comboBox.js') }}"></script>
+<script src="{{ mix('js/editor.js') }}"></script>
 @endsection
