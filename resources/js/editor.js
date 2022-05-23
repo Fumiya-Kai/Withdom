@@ -36,17 +36,17 @@ $(function(){
     }
   });
 
+  // テキストエリア入力時の機能
   $('.article-content').on('input', function(){
 
     // テキストエリアの高さが自動で変わる機能
-    $('.article-content').innerHeight(oldHeight);
+    $(this).innerHeight(oldHeight);
     let height = $(this).get(0).scrollHeight;
-    $('.article-content').innerHeight(height);
+    $(this).innerHeight(height);
 
     // マークダウンのコンパイル機能
     let compiledMarkdown = marked($(this).val());
     $('.preview').html(compiledMarkdown);
-    console.log(compiledMarkdown);
 
     // mathjaxの適用
     let div=$('.preview').html();
