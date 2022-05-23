@@ -22,6 +22,20 @@ $(function(){
     }
   })
 
+  // mathjaxの設定
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": {
+      availableFonts: ["TeX"]
+    }
+  });
+
   $('.article-content').on('input', function(){
 
     // テキストエリアの高さが自動で変わる機能
@@ -33,5 +47,10 @@ $(function(){
     let compiledMarkdown = marked($(this).val());
     $('.preview').html(compiledMarkdown);
     console.log(compiledMarkdown);
+
+    // mathjaxの適用
+    let div=$('.preview').html();
+    MathJax.Hub.Configured();
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
   });
 })
