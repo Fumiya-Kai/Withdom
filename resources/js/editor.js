@@ -1,5 +1,5 @@
-const { marked } = require('marked')
-const highlight = require('highlight.js')
+const { marked } = require('marked');
+const highlight = require('highlight.js');
 
 // タブの切り替わり機能
 $(function(){
@@ -20,7 +20,7 @@ $(function(){
     highlight: code => {
       return highlight.highlightAuto(code).value
     }
-  })
+  });
 
   // mathjaxの設定
   MathJax.Hub.Config({
