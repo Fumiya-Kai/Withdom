@@ -10,6 +10,8 @@ class Article extends Model
 {
     use HasFactory;
 
+    const ARTICLES_PER_PAGE = 10;
+
     protected $fillable = [
         'title',
         'abstract',
@@ -17,6 +19,13 @@ class Article extends Model
         'user_id',
         'team_id',
     ];
+
+    public function getByUserId($id)
+    {
+        return $this->where('user_id', $id)
+                    ->latest()
+                    ->paginate(self::ARTICLES_PER_PAGE);
+    }
 
     public function users()
     {
