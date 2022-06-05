@@ -17,6 +17,8 @@ class Team extends Model
         'document',
     ];
 
+    public $timestamps = false;
+
     public function getByUserId($id)
     {
         return $this->where('user_id', $id)
