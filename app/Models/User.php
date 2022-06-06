@@ -44,6 +44,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getTeamsByUserId($id)
+    {
+        return $this->find($id)->teams;
+    }
+
     public function articles()
     {
         return $this->belongsToMany(Article::class);

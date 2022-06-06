@@ -19,13 +19,6 @@ class Team extends Model
 
     public $timestamps = false;
 
-    public function getByUserId($id)
-    {
-        return $this->where('user_id', $id)
-                    ->latest()
-                    ->paginate(self::TEAMS_PER_PAGE);
-    }
-
     public function users()
     {
         return $this->belongsToMany(User::class);

@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -23,9 +24,8 @@ class UserController extends Controller
 
     public function mypage()
     {
-      $teams = $this->team->getByUserId(Auth::id());
+      $teams = $this->user->getTeamsByUserId(Auth::id());
       $articles = $this->article->getByUserId(Auth::id());
-
       return view('mypage', compact('teams', 'articles'));
     }
 }

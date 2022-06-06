@@ -13,43 +13,60 @@
     <div class="h1">チーム</div>
   </div>
   <div class="row row-cols-1 row-cols-md-4 mb-4">
-    @for ($i = 0; $i < 6; $i++)
+    @if($teams)
+    @foreach($teams as $team)
     <div class="col mb-4">
       <div class="card p-3">
         <div class="row">
-          <div class="col text-center">
-            <img src="https://icongr.am/material/account-group.svg?size=80&color=8f8f8f" class="w-auto" alt="チームアイコン">
+          <div class="col-3 text-center">
+            <img src="https://icongr.am/material/account-group.svg?size=65&color=8f8f8f" class="w-auto" alt="チームアイコン">
           </div>
-          <div class="col">
-            <div class="h2 d-flex align-items-center m-0 border-bottom">TeamName</div>
-            <div>This is a team. Member study about</div>
+          <div class="col-9">
+            <div class="h2 d-flex align-items-center m-0 border-bottom">{{ $team->name }}</div>
+            <div>{{ Str::limit($team->description, 30) }}</div>
           </div>
         </div>
       </div>
     </div>
-    @endfor
+    @endforeach
+    @else
+    <div class="card">
+      <div class="card-body">
+        参加しているチームがありません
+      </div>
+    </div>
+    @endif
   </div>
   <div class="row">
     <div class="h1">記事</div>
   </div>
   <div class="row row-cols-1 row-cols-md-5">
-    @for ($i = 0; $i < 6; $i++)
+    @if($articles)
+    @foreach($articles as $article)
     <div class="col-1 mb-4">
       <div class="card pt-4">
         <div class="d-flex align-items-center justify-content-center mb-3">
-          <img src="https://icongr.am/devicon/html5-original.svg?size=100&color=8f8f8f" class="w-auto" alt="記事アイコン">
+          <img src="{{ $article->categories->first()->image }}" class="w-auto" alt="記事アイコン">
         </div>
         <div class="card-body">
-          <div class="card-title h2 border-bottom">Article Title</div>
-          <p class="card-text mb-1">This is a longer card of aritcle.This is a longer card of aritcle.This is a longer card of aritcle.</p>
+          <div class="card-title h2 border-bottom">{{ $article->title}}</div>
+          <p class="card-text mb-1">{{ Str::limit($article->abstract, 60) }}</p>
           <div>
-            <span class="w-auto badge rounded-pill bg-secondary bg-opacity-25 text-dark">html/css</span>
-            <span class="w-auto badge rounded-pill bg-secondary bg-opacity-25 text-dark">javascript</span>
+            @foreach($article->categories as $category)
+            <span class="w-auto badge rounded-pill bg-secondary bg-opacity-25 text-dark">{{ $category->name }}</span>
+            @endforeach
           </div>
         </div>
       </div>
     </div>
-    @endfor
+    @endforeach
+    @else
+    <div class="card">
+      <div class="card-body">
+        書いた記事がありません
+      </div>
+    </div>
+    @endif
   </div>
 </div>
 @endsection
