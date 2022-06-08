@@ -17,15 +17,17 @@
     @foreach($teams as $team)
     <div class="col mb-4">
       <div class="card p-3">
-        <div class="row">
-          <div class="col-3 text-center">
-            <img src="https://icongr.am/material/account-group.svg?size=65&color=8f8f8f" class="w-auto" alt="チームアイコン">
+        <a href="{{ route('team.show', $team->id) }}" class="text-reset text-decoration-none">
+          <div class="row">
+            <div class="col-3 text-center">
+              <img src="https://icongr.am/material/account-group.svg?size=65&color=8f8f8f" class="w-auto" alt="チームアイコン">
+            </div>
+            <div class="col-9">
+              <div class="h2 d-flex align-items-center m-0 border-bottom">{{ $team->name }}</div>
+              <div>{{ Str::limit($team->description, 30) }}</div>
+            </div>
           </div>
-          <div class="col-9">
-            <div class="h2 d-flex align-items-center m-0 border-bottom">{{ $team->name }}</div>
-            <div>{{ Str::limit($team->description, 30) }}</div>
-          </div>
-        </div>
+        </a>
       </div>
     </div>
     @endforeach
