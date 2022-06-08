@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\User\UserController::class, 'mypage'])->name('mypage');
 
-Route::get('/teams/{teamId}', function () {
-    return view('team');
-});
+Route::get('/teams/{teamId}', [App\Http\Controllers\User\TeamController::class, 'show'])->name('team.show');
 
 Route::get('/team/create', function () {
     return view('team_create');

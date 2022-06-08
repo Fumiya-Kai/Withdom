@@ -20,12 +20,12 @@
     <div class="h1 col-5">メンバー</div>
   </div>
   <div class="row border-bottom mt-3">
-    @for ($i = 0; $i < 6; $i++)
+    @foreach($users as $user)
     <div class="badge rounded-pill bg-secondary bg-opacity-25 w-auto text-dark py-2 px-3 mb-3 me-1">
-      <img src="https://icongr.am/fontawesome/user.svg?size=30&color=545454" class="w-auto" alt="ユーザーアイコン">
-      <span class="h5">member</span>
+      <img src="@if($user->avatar){{ $user->avatar }}@else https://icongr.am/fontawesome/user.svg?size=30&color=545454 @endif" class="w-auto" alt="ユーザーアイコン">
+      <span class="h5">{{ $user->name }}</span>
     </div>
-    @endfor
+    @endforeach
   </div>
   <div class="row mt-5">
     <div class="h1">記事</div>
@@ -51,23 +51,24 @@
     </div>
   </form>
   <div class="row row-cols-1 row-cols-md-5 mt-5">
-    @for ($i = 0; $i < 6; $i++)
+    @foreach($articles as $article)
     <div class="col-1 mb-4">
       <div class="card pt-4">
         <div class="d-flex align-items-center justify-content-center mb-3">
-          <img src="https://icongr.am/material/laravel.svg?size=100&color=8f8f8f" class="w-auto" alt="記事アイコン">
+          <img src="{{ $article->categories->first()->image }}" class="w-auto" alt="記事アイコン">
         </div>
         <div class="card-body">
-          <div class="card-title h2 border-bottom">Article Title</div>
-          <p class="card-text mb-1">This is a longer card of aritcle.This is a longer card of aritcle.</p>
+          <div class="card-title h2 border-bottom">{{ $article->title }}</div>
+          <p class="card-text mb-1">{{ $article->abstract }}</p>
           <div>
-            <span class="w-auto badge rounded-pill bg-secondary bg-opacity-25 text-dark">html/css</span>
-            <span class="w-auto badge rounded-pill bg-secondary bg-opacity-25 text-dark">javascript</span>
+            @foreach($article->categories as $category)
+            <span class="w-auto badge rounded-pill bg-secondary bg-opacity-25 text-dark">{{ $category->name}}</span>
+            @endforeach
           </div>
         </div>
       </div>
     </div>
-    @endfor
+    @endforeach
   </div>
 </div>
 @endsection

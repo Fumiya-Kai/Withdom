@@ -27,6 +27,13 @@ class Article extends Model
                     ->paginate(self::ARTICLES_PER_PAGE);
     }
 
+    public function getByTeamId($id)
+    {
+        return $this->where('team_id', $id)
+                    ->latest()
+                    ->paginate(self::ARTICLES_PER_PAGE);
+    }
+
     public function users()
     {
         return $this->belongsTo(User::class, 'user_id');

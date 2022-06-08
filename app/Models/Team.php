@@ -19,6 +19,11 @@ class Team extends Model
 
     public $timestamps = false;
 
+    public function getMembers($id)
+    {
+        return $this->find($id)->users;
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class);
