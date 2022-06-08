@@ -21,4 +21,9 @@ class TeamController extends Controller
         $users = $this->team->getMembers($id);
         return view('team', compact('articles', 'users'));
     }
+
+    public function create()
+    {
+        return view('team_create');
+    }
 }

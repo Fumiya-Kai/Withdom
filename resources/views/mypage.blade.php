@@ -6,7 +6,7 @@
     <img src="https://icongr.am/fontawesome/user-circle.svg?size=140&color=70e6a9" class="w-auto" alt="ユーザーアイコン">
     <div class="col d-flex align-items-center display-3">UserName</div>
     <div class="col-4 d-flex align-items-end">
-      <a href="" type="button" class="btn btn-warning btn-lg">チーム作成</a>
+      <a href="{{ route('team.create') }}" type="button" class="btn btn-warning btn-lg">チーム作成</a>
     </div>
   </div>
   <div class="row mt-5">
