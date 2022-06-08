@@ -5,7 +5,8 @@
   <div class="row">
     <div class="display-6">チーム作成</div>
   </div>
-  <form action="" method="post" class="mt-5">
+  <form action="{{ route('team.store') }}" method="post" class="mt-5">
+    @csrf
     <div class="w-50">
       <label for="name" class="form-label h5">チーム名</label>
       <input type="text" id="name" name="name" class="form-control" placeholder="チーム名を入力">

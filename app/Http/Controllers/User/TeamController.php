@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
 {
@@ -25,5 +26,12 @@ class TeamController extends Controller
     public function create()
     {
         return view('team_create');
+    }
+
+    public function store(Request $request)
+    {
+        $input = $request->except('emails');
+        $this->team->createTeam($input, Auth::id());
+        return redirect()->route('mypage');
     }
 }
