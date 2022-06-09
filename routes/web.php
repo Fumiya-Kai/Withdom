@@ -17,9 +17,7 @@ Route::get('/', [App\Http\Controllers\User\UserController::class, 'mypage'])->na
 
 Route::resource('team', App\Http\Controllers\User\TeamController::class);
 
-Route::get('/article/create', function () {
-    return view('article_create');
-});
+Route::resource('article', App\Http\Controllers\User\ArticleController::class);
 
 Auth::routes();
 

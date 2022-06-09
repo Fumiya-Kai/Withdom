@@ -10,7 +10,7 @@
         <img src="https://icongr.am/fontawesome/user-plus.svg?size=30&color=currentColor" alt="メンバー追加アイコン">
         メンバー招待
       </a>
-      <a href="" type="button" class="btn btn-warning btn-lg col-4">
+      <a href="{{ route('article.create') }}" type="button" class="btn btn-warning btn-lg col-4">
         <img src="https://icongr.am/material/pencil-plus.svg?size=30&color=currentColor" alt="記事追加アイコン">
         記事作成
       </a>
