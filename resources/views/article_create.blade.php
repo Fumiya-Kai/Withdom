@@ -5,33 +5,20 @@
   <div class="row">
     <div class="display-6">記事作成</div>
   </div>
-  <form action="" method="post" class="mt-5">
+  <form action="{{ route('article.store') }}" method="post" class="mt-5">
+    @csrf
     <div class="w-50">
       <label for="category" class="form-label h5">カテゴリー</label>
       <div class="category-form form-control text-secondary" style="cursor: text;">
         <input type="text" class="category-input border-0" style="background-color: rgba(0,0,0,0); outline: none;">
       </div>
       <ul class="category-list list-group rounded-0" style="display: none; position: fixed;">
+        @foreach($categories as $category)
         <li class="category-item list-group-item">
-          <input class="category-checkbox form-check-input" type="checkbox" value="First checkbox" data-id="1" aria-label="...">
-          First checkbox
+          <input class="category-checkbox form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}" data-id="{{ $category->id }}" data-name="{{ $category->name }}" aria-label="...">
+          {{ $category->name }}
         </li>
-        <li class="category-item list-group-item">
-          <input class="category-checkbox form-check-input" type="checkbox" value="Second checkbox" data-id="2" aria-label="...">
-          Second checkbox
-        </li>
-        <li class="category-item list-group-item">
-          <input class="category-checkbox form-check-input" type="checkbox" value="Third checkbox" data-id="3" aria-label="...">
-          Third checkbox
-        </li>
-        <li class="category-item list-group-item">
-          <input class="category-checkbox form-check-input" type="checkbox" value="Fourth checkbox" data-id="4" aria-label="...">
-          Fourth checkbox
-        </li>
-        <li class="category-item list-group-item">
-          <input class="category-checkbox form-check-input" type="checkbox" value="Fifth checkbox" data-id="5" aria-label="...">
-          Fifth checkbox
-        </li>
+        @endforeach
       </ul>
     </div>
     <div class="w-50 mt-4">

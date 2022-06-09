@@ -20,6 +20,13 @@ class ArticleController extends Controller
 
     public function create()
     {
-        return view('article_create');
+        $categories = $this->category->all();
+        return view('article_create', compact('categories'));
+    }
+
+    public function store(Request $request)
+    {
+        $input = $request->all();
+        dd($input);
     }
 }

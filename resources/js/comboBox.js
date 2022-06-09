@@ -25,7 +25,7 @@ $(function(){
   // チェックボックスチェック操作の挙動
   $('.category-checkbox').change(function(){
     if($(this).prop('checked')) {
-      let categoryName = $(this).val();
+      let categoryName = $(this).data('name');
       let categoryId = $(this).data('id');
       let categoryBadge = createBadge(categoryName, categoryId);
       $('.category-input').before(categoryBadge);
@@ -40,7 +40,9 @@ $(function(){
     if(e.key === 'Enter'){
       let categoryName = $('.category-input').val();
       let categoryBadge = createBadge(categoryName);
+      let newCategory = createHiddenInput(categoryName);
       $(this).before(categoryBadge);
+      $(this).after(newCategory);
       $('.category-input').val('');
       return false;
     };
@@ -49,6 +51,8 @@ $(function(){
   // backspaceによるタグ削除
   $('.category-input').on('keydown', function(e){
     if(e.key === 'Backspace' && $(this).get(0).selectionStart === 0){
+      $hiddenId = `#hiddeninput${$('.added-category-badge').last().text()}`;
+      $($hiddenId).remove();
       $('.added-category-badge').last().remove();
     };
   })
@@ -56,5 +60,9 @@ $(function(){
   // タグ作成の関数
   function createBadge(categoryName, categoryId = null) {
     return `<div class="added-category-badge badge rounded-pill bg-secondary bg-opacity-25 me-1 text-dark" id="${categoryId}">${categoryName}</div>`;
+  }
+
+  function createHiddenInput(categoryName) {
+    return `<input name="new-categories[]" type="hidden" value="${categoryName}" id="hiddeninput${categoryName}">`;
   }
 })
