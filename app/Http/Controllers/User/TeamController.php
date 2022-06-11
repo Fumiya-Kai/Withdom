@@ -16,10 +16,11 @@ class TeamController extends Controller
         $this->article = $article;
     }
 
-    public function show($id)
+    public function show($id, Request $request)
     {
         $articles = $this->article->getByTeamId($id);
         $users = $this->team->getMembers($id);
+        session(['team_id' => $id]);
         return view('team', compact('articles', 'users'));
     }
 
