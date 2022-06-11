@@ -19,7 +19,8 @@
     </div>
     <div class="first-members w-50 mt-4">
       <label for="email" class="form-label h5">ユーザー招待</label>
-      <input type="email" id="email" name="emails[0]" class="form-control" placeholder="招待するユーザーのメールアドレスを入力">
+      <input type="email" id="email" name="emails[0]" class="form-control @if($errors->has('emails')) is-invalid @endif" placeholder="招待するユーザーのメールアドレスを入力">
+      <span class="invalid-feedback">{{ $errors->first('emails') }}</span>
     </div>
     <div class="mt-2">
       <button type="button" class="btn-add-form btn btn-success py-0 px-1">

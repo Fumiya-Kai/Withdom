@@ -26,7 +26,7 @@ class TeamRequest extends FormRequest
         return [
             'name' => 'required|max:30',
             'description' => 'required|max:255',
-            'document' => 'max:2048'
+            'emails' => 'email'
         ];
     }
 
