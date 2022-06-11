@@ -16,7 +16,7 @@ class TeamController extends Controller
         $this->article = $article;
     }
 
-    public function show($id, Request $request)
+    public function show($id)
     {
         $articles = $this->article->getByTeamId($id);
         $users = $this->team->getMembers($id);
