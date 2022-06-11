@@ -22,7 +22,7 @@ class UserController extends Controller
       $this->team = $team;
     }
 
-    public function mypage()
+    public function mypage(Request $request)
     {
       $teams = $this->user->getTeamsByUserId(Auth::id());
       $articles = $this->article->getByUserId(Auth::id());

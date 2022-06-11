@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Article extends Model
 {
@@ -32,6 +34,27 @@ class Article extends Model
         return $this->where('team_id', $id)
                     ->latest()
                     ->paginate(self::ARTICLES_PER_PAGE);
+    }
+
+    public function saveNewArticle($newArticleInput, $newCategoryIds, $teamId)
+    {
+        $newArticleInput['user_id'] = Auth::id();
+        $newArticleInput['team_id'] = $teamId;
+
+        if(!array_key_exists('categories', $newArticleInput)) {
+            $newArticleInput['categories'] = $newCategoryIds;
+        } else {
+            $newArticleInput['categories'] = array_merge($newArticleInput['categories'], $newCategoryIds);
+        }
+
+        $categories = $newArticleInput['categories'];
+        unset($newArticleInput['categories']);
+
+        DB::transaction(function () use ($newArticleInput, $categories) {
+            $this->create($newArticleInput)
+             ->categories()
+             ->sync($categories);
+        });
     }
 
     public function users()

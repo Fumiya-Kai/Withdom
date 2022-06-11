@@ -26,7 +26,10 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
-        $input = $request->all();
-        dd($input);
+        $teamId = $request->session()->get('team_id');
+        $newCategoriesInput = $request->only('new-categories');
+        $newArticleInput = $request->except('new-categories');
+        $newCategoryIds = $this->category->saveNewAndGetIds($newCategoriesInput);
+        $this->article->saveNewArticle($newArticleInput, $newCategoryIds, $teamId);
     }
 }
