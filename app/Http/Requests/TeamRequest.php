@@ -29,4 +29,12 @@ class TeamRequest extends FormRequest
             'document' => 'max:2048'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'required' => '入力必須の項目です。',
+            'max' => ':max文字以内で入力してください。'
+        ];
+    }
 }
