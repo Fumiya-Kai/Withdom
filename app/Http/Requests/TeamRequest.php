@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\uniqueEmailAddress;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TeamRequest extends FormRequest
@@ -26,7 +27,7 @@ class TeamRequest extends FormRequest
         return [
             'name' => 'required|max:30',
             'description' => 'required|max:255',
-            'emails' => 'email'
+            'emails' => new uniqueEmailAddress,
         ];
     }
 
