@@ -9,11 +9,13 @@
     @csrf
     <div class="w-50">
       <label for="name" class="form-label h5">チーム名</label>
-      <input type="text" id="name" name="name" class="form-control" placeholder="チーム名を入力">
+      <input type="text" id="name" name="name" class="form-control @if($errors->has('name')) is-invalid @endif" placeholder="チーム名を入力">
+      <span class="invalid-feedback">{{ $errors->first('name') }}</span>
     </div>
     <div class="w-50 mt-4">
       <label for="description" class="form-label h5">説明</label>
-      <textarea name="description" id="description" cols="30" rows="10" class="form-control" placeholder="チームの説明"></textarea>
+      <textarea name="description" id="description" cols="30" rows="10" class="form-control @if($errors->has('description')) is-invalid @endif" placeholder="チームの説明"></textarea>
+      <span class="invalid-feedback">{{ $errors->first('description') }}</span>
     </div>
     <div class="first-members w-50 mt-4">
       <label for="email" class="form-label h5">ユーザー招待</label>

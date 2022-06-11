@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TeamRequest;
 use App\Models\Article;
 use App\Models\Team;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
@@ -29,9 +29,9 @@ class TeamController extends Controller
         return view('team_create');
     }
 
-    public function store(Request $request)
+    public function store(TeamRequest $request)
     {
-        $input = $request->except('emails');
+        $input = $request->validated();
         $this->team->createTeam($input, Auth::id());
         return redirect()->route('mypage');
     }
