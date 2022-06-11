@@ -26,7 +26,6 @@ class uniqueEmailAddress implements Rule
     public function passes($attribute, $value)
     {
         $max = max(array_count_values($value));
-        dd($max);
         return $max === 1;
     }
 
