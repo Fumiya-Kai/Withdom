@@ -25,10 +25,11 @@ class TeamRequest extends FormRequest
      */
     public function rules()
     {
+        $postData = $this->all();
         return [
             'name' => 'required|max:30',
             'description' => 'required|max:255',
-            'emails' => [new isEmailAddress, new uniqueEmailAddress],
+            'emails' => empty($postData['emails'][0])? '' : [new isEmailAddress, new uniqueEmailAddress],
         ];
     }
 
