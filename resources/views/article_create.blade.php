@@ -9,9 +9,11 @@
     @csrf
     <div class="w-50">
       <label for="category" class="form-label h5">カテゴリー</label>
-      <div class="category-form form-control text-secondary" style="cursor: text;">
+      <div class="category-form form-control text-secondary @if($errors->has('categories') or $errors->has('new-categories')) is-invalid @endif" style="cursor: text;">
         <input type="text" class="category-input border-0" style="background-color: rgba(0,0,0,0); outline: none;">
       </div>
+      <span class="invalid-feedback">{{ $errors->first('categories') }}</span>
+      <span class="invalid-feedback">{{ $errors->first('new-categories') }}</span>
       <ul class="category-list list-group rounded-0" style="display: none; position: fixed;">
         @foreach($categories as $category)
         <li class="category-item list-group-item">
@@ -23,11 +25,13 @@
     </div>
     <div class="w-50 mt-4">
       <label for="title" class="form-label h5">タイトル</label>
-      <input type="text" id="title" name="title" class="form-control" placeholder="記事のタイトルを入力">
+      <input type="text" id="title" name="title" class="form-control @if($errors->has('title')) is-invalid @endif" placeholder="記事のタイトルを入力">
+      <span class="invalid-feedback">{{ $errors->first('title') }}</span>
     </div>
     <div class="w-50 mt-4">
       <label for="abstract" class="form-label h5">要約</label>
-      <input type="text" id="abstract" name="abstract" class="form-control" placeholder="記事の要約を入力">
+      <input type="text" id="abstract" name="abstract" class="form-control @if($errors->has('abstract')) is-invalid @endif" placeholder="記事の要約を入力">
+      <span class="invalid-feedback">{{ $errors->first('abstract') }}</span>
     </div>
     <div class="w-75 mt-4">
       <label for="content" class="form-label h5">本文</label>
@@ -41,7 +45,8 @@
       </ul>
       <div class="tab-content">
         <div id="editor" class="tab-pane active">
-          <textarea name="content" id="content" class="article-content form-control border-top-0 rounded-0" style="min-height: 300px;"></textarea>
+          <textarea name="content" id="content" class="article-content form-control border-top-0 rounded-0 @if($errors->has('content')) is-invalid @endif" style="min-height: 300px;"></textarea>
+          <span class="invalid-feedback">{{ $errors->first('content') }}</span>
         </div>
         <div id="preview" class="preview tab-pane">
         </div>
