@@ -24,7 +24,8 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            "categories" => 'exists:categories,id',
+
+            'categories' => 'exists:categories,id',
             'title' => 'required|max:255',
             'abstract' => 'required|max:255',
             'content' => 'required|max:5000',
