@@ -20,7 +20,6 @@ class TeamController extends Controller
     {
         $articles = $this->article->getByTeamId($id);
         $users = $this->team->getMembers($id);
-        session(['team_id' => $id]);
         return view('team', compact('articles', 'users'));
     }
 

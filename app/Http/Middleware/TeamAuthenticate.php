@@ -21,6 +21,10 @@ class TeamAuthenticate
         $usersTeams = Auth::user()->teams;
         foreach($usersTeams as $usersTeam) {
             if($usersTeam->id == $teamId) {
+                if($request->session()->has('team_id')) {
+                    $request->session()->forget('key');
+                }
+                session(['team_id' => $teamId]);
                 return $next($request);
             }
         }
