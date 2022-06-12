@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\User\UserController::class, 'mypage'])->name('mypage');
 
 Route::resource('team', App\Http\Controllers\User\TeamController::class)->except('show');
-Route::get('/team/{teamId}', [App\Http\Controllers\User\TeamController::class, 'show'])->middleware('auth.team')->name('team.show');
+Route::get('/team/{teamId}', [App\Http\Controllers\User\TeamController::class, 'show'])->middleware('auth.team.route')->name('team.show');
 
 Route::resource('article', App\Http\Controllers\User\ArticleController::class);
 
