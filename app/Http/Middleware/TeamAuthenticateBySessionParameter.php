@@ -28,8 +28,6 @@ class TeamAuthenticateBySessionParameter
                     }
                 }
             }
-        } elseif(url()->previous() === url('mypage')) {
-            return $next($request);
         }
         return response(view('error.failed_team_authentication'));
     }
