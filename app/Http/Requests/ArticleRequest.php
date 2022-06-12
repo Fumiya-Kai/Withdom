@@ -24,7 +24,7 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         return [
-
+            'new-categories' => 'unique:categories,name',
             'categories' => 'exists:categories,id',
             'title' => 'required|max:255',
             'abstract' => 'required|max:255',
@@ -38,6 +38,7 @@ class ArticleRequest extends FormRequest
             'required' => '入力必須の項目です。',
             'max' => ':max文字以内で入力してください。',
             'exists' => '不正なカテゴリが含まれています',
+            'unique' => 'すでに存在するカテゴリです。'
         ];
     }
 }
