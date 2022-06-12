@@ -24,6 +24,6 @@ class TeamAuthenticate
                 return $next($request);
             }
         }
-        return redirect()->route('home');
+        return response(view('error.failed_team_authentication'));
     }
 }
