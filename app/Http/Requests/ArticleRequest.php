@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\maxNewCategoryName;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ArticleRequest extends FormRequest
@@ -24,7 +25,7 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'new-categories' => 'unique:categories,name',
+            'new-categories' => ['unique:categories,name', new maxNewCategoryName],
             'categories' => 'exists:categories,id',
             'title' => 'required|max:255',
             'abstract' => 'required|max:255',
