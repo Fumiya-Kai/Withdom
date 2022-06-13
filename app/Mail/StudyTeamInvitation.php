@@ -23,10 +23,10 @@ class StudyTeamInvitation extends Mailable
      */
     public function __construct($name, $text, $teamId)
     {
-        $this->title = 'チームへ招待されました';
+        $this->title = $name. 'さんからチームへ招待されました';
         $this->text = $text;
         $this->url = URL::temporarySignedRoute(
-                            'login.invitated', now()->addMinutes(30), ['team_id' => $teamId]
+                            'login.invited', now()->addMinutes(30), ['team_id' => $teamId]
                         );
     }
 
