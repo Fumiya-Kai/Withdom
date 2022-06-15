@@ -22,6 +22,8 @@ Route::group(['middleware' => 'auth.team.session'], function() {
 
 Route::resource('team', App\Http\Controllers\User\TeamController::class)->only('create', 'store');
 Route::get('/team/{teamId}', [App\Http\Controllers\User\TeamController::class, 'show'])->middleware('auth.team.route')->name('team.show');
+Route::get('/login_invited', [App\Http\Controllers\Auth\LoginController::class, 'showInvitedLogin'])->name('login.invited');
+Route::get('/register_invited', [App\Http\Controllers\Auth\RegisterController::class, 'showInvitedRegister'])->name('register.invited');
 
 Auth::routes();
 
