@@ -20,7 +20,7 @@ class TeamAuthenticateBySessionParameter
     {
         if($request->session()->has('team_id')) {
             $teamIdData = $request->session()->get('team_id');
-            if(Hash::check($teamIdData['id'], $teamIdData['check'])) {
+            if(Hash::check('team_id='. $teamIdData['id'], $teamIdData['check'])) {
                 $usersTeams = Auth::user()->teams;
                 foreach($usersTeams as $usersTeam) {
                     if($usersTeam->id == $teamIdData['id']) {
