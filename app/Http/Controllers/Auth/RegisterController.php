@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -69,5 +70,30 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function showInvitedRegister(Request $request)
+    {
+        if (Hash::check('team_id='. $request->team_id, $request->signature)) {
+            abort(401);
+        }
+        $teamId = $request->team_id;
+        $signature = $request->signature;
+        return view('auth.invited.register', compact('teamId', 'signature'));
+    }
+
+    public function registered(Request $request, $user)
+    {
+        $input = $request->only('team_id', 'signature');
+        if($request->path() === 'register_invited') {
+            if(Hash::check('team_id='. $input['team_id'], $input['signature'])) {
+                $user->teams()->sync($input['team_id']);
+                return redirect()->route('team.show');
+            } else {
+                abort(401);
+            }
+        } else {
+            abort(401);
+        }
     }
 }
