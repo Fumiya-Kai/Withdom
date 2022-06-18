@@ -25,6 +25,7 @@ Route::get('/team/{teamId}', [App\Http\Controllers\User\TeamController::class, '
 Route::get('/login_invited', [App\Http\Controllers\Auth\LoginController::class, 'showInvitedLogin'])->name('login.invited');
 Route::get('/register_invited', [App\Http\Controllers\Auth\RegisterController::class, 'showInvitedRegister'])->name('register.invited');
 
-Auth::routes();
+Auth::routes(['register' => false]);
+Route::post('/register_invited', [App\Http\Controllers\Auth\RegisterController::class, 'showInvitedRegister'])->name('register');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
