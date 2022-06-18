@@ -37,7 +37,7 @@ class StudyTeamInvitation extends Mailable
      */
     public function build()
     {
-        return $this->view('common.mail.invite')
+        return $this->view('mail.invite')
                     ->subject($this->title)
                     ->with([
                         'text' => $this->text,
