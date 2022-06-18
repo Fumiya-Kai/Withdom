@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\URL;
 
-class StudyTeamInvitation extends Mailable
+class NewTeamInvitation extends Mailable
 {
     use Queueable, SerializesModels;
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TeamRequest;
-use App\Mail\StudyTeamInvitation;
+use App\Mail\NewTeamInvitation;
 use App\Models\Article;
 use App\Models\Team;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +41,7 @@ class TeamController extends Controller
     private function inviteToNewTeam($mailTo, $fromName, $teamName, $teamId)
     {
         foreach($mailTo as $address) {
-            Mail::to($address)->send( new StudyTeamInvitation($fromName, $teamName, $teamId) );
+            Mail::to($address)->send( new NewTeamInvitation($fromName, $teamName, $teamId) );
         }
     }
 }
