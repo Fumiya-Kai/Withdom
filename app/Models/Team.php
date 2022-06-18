@@ -25,13 +25,16 @@ class Team extends Model
         return $this->find($id)->users;
     }
 
-    public function createTeam($teamInput, $userId)
+    public function createTeamAndGetId($teamInput, $userId)
     {
-        DB::transaction(function () use ($teamInput, $userId) {
-            $this->create($teamInput)
-                 ->users()
-                 ->sync($userId);
-        });
+        $newTeamId = DB::transaction(function () use ($teamInput, $userId) {
+                         $newTeamId = $this->create($teamInput)->id;
+                         $this->find($newTeamId)
+                              ->users()
+                              ->sync($userId);
+                         return $newTeamId;
+                     });
+        return $newTeamId;
     }
 
     public function users()
