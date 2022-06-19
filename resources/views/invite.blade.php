@@ -5,7 +5,7 @@
   <div class="row">
     <div class="display-6">チーム作成</div>
   </div>
-  <form action="{{ route('team.invite') }}" method="post" class="mt-5">
+  <form action="{{ route('invite.mail') }}" method="post" class="mt-5">
     @csrf
     <div class="add-members w-50 mt-4">
       <label for="email" class="form-label h5">ユーザー招待</label>

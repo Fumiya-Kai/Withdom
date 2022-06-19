@@ -38,6 +38,11 @@ class TeamController extends Controller
         return redirect()->route('mypage');
     }
 
+    public function showInviteForm()
+    {
+        return view('invite');
+    }
+
     private function inviteToNewTeam($mailTo, $fromName, $teamName, $teamId)
     {
         foreach($mailTo as $address) {
