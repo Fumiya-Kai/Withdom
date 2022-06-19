@@ -35,20 +35,13 @@ class TeamController extends Controller
     {
         $input = $request->validated();
         $teamId = $this->team->createTeamAndGetId($input, Auth::id());
-        $this->inviteToNewTeam($input['emails'], Auth::user()->name, $input['name'], $teamId);
+        $this->invite($input['emails'], Auth::user()->name, $input['name'], $teamId);
         return redirect()->route('mypage');
     }
 
     public function showInviteForm()
     {
         return view('invite');
-    }
-
-    private function inviteToNewTeam($mailTo, $fromName, $teamName, $teamId)
-    {
-        foreach($mailTo as $address) {
-            Mail::to($address)->send( new NewTeamInvitation($fromName, $teamName, $teamId) );
-        }
     }
 
     public function inviteToExistingTeam(InviteRequest $request)
@@ -60,9 +53,14 @@ class TeamController extends Controller
                          ->find($teamId)
                          ->first()
                          ->name;
-        foreach($input['emails'] as $address) {
-            Mail::to($address)->send( new NewTeamInvitation(Auth::user()->name, $teamName, $teamId) );
-        }
+        $this->invite($input['emails'], Auth::user()->name, $teamName, $teamId);
         return redirect()->route('team.show', $teamId);
+    }
+
+    private function invite($mailTo, $fromName, $teamName, $teamId)
+    {
+        foreach($mailTo as $address) {
+            Mail::to($address)->send( new NewTeamInvitation($fromName, $teamName, $teamId) );
+        }
     }
 }
