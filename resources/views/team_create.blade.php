@@ -17,7 +17,7 @@
       <textarea name="description" id="description" cols="30" rows="10" class="form-control @if($errors->has('description')) is-invalid @endif" placeholder="チームの説明"></textarea>
       <span class="invalid-feedback">{{ $errors->first('description') }}</span>
     </div>
-    <div class="first-members w-50 mt-4">
+    <div class="add-members w-50 mt-4">
       <label for="email" class="form-label h5">ユーザー招待</label>
       <input type="email" id="email" name="emails[0]" class="form-control @if($errors->has('emails')) is-invalid @endif" placeholder="招待するユーザーのメールアドレスを入力">
       <span class="invalid-feedback">{{ $errors->first('emails') }}</span>

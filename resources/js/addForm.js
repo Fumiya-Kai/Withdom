@@ -6,7 +6,7 @@ $(function(){
     `
     <input type="email" id="email" name="emails[${memberCount}]" class="form-first-member form-control mt-2" placeholder="招待するユーザーのメールアドレスを入力">
     `
-    $('.first-members').append(formFirstMember);
+    $('.add-members').append(formFirstMember);
     memberCount++;
   });
 })
