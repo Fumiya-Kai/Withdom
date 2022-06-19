@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InviteRequest;
 use App\Http\Requests\TeamRequest;
 use App\Mail\NewTeamInvitation;
 use App\Models\Article;
@@ -48,5 +49,20 @@ class TeamController extends Controller
         foreach($mailTo as $address) {
             Mail::to($address)->send( new NewTeamInvitation($fromName, $teamName, $teamId) );
         }
+    }
+
+    public function inviteToExistingTeam(InviteRequest $request)
+    {
+        $input = $request->validated();
+        $teamIdData = $request->session()->get('team_id');
+        $teamId = $teamIdData['id'];
+        $teamName = $this->team
+                         ->find($teamId)
+                         ->first()
+                         ->name;
+        foreach($input['emails'] as $address) {
+            Mail::to($address)->send( new NewTeamInvitation(Auth::user()->name, $teamName, $teamId) );
+        }
+        return redirect()->route('team.show', $teamId);
     }
 }
