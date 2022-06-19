@@ -24,8 +24,8 @@ Route::resource('team', App\Http\Controllers\User\TeamController::class)->only('
 Route::get('/team/{teamId}', [App\Http\Controllers\User\TeamController::class, 'show'])->middleware('auth.team.route')->name('team.show');
 Route::get('/login_invited', [App\Http\Controllers\Auth\LoginController::class, 'showInvitedLogin'])->name('login.invited');
 Route::get('/register_invited', [App\Http\Controllers\Auth\RegisterController::class, 'showInvitedRegister'])->name('register.invited');
-Route::get('/invite', [App\Http\Controllers\User\TeamController::class, 'showInviteForm'])->name('invite');
-Route::post('/invite', [App\Http\Controllers\User\TeamController::class, 'inviteToExistingTeam'])->name('invite');
+Route::get('/invite', [App\Http\Controllers\User\TeamController::class, 'showInviteForm'])->name('invite.form');
+Route::post('/invite', [App\Http\Controllers\User\TeamController::class, 'inviteToExistingTeam'])->name('invite.mail');
 
 Auth::routes(['register' => false]);
 Route::post('/register_invited', [App\Http\Controllers\Auth\RegisterController::class, 'showInvitedRegister'])->name('register');
