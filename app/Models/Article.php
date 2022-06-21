@@ -36,14 +36,14 @@ class Article extends Model
                     ->paginate(self::ARTICLES_PER_PAGE);
     }
 
-    public function saveNewArticle($newArticleInput, $newCategoryIds, $teamId)
+    public function saveNewArticle($newArticleInput, $newCategoryIds = null, $teamId)
     {
         $newArticleInput['user_id'] = Auth::id();
         $newArticleInput['team_id'] = $teamId;
 
         if(!array_key_exists('categories', $newArticleInput)) {
             $newArticleInput['categories'] = $newCategoryIds;
-        } else {
+        } elseif($newCategoryIds) {
             $newArticleInput['categories'] = array_merge($newArticleInput['categories'], $newCategoryIds);
         }
 

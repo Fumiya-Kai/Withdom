@@ -29,10 +29,20 @@ class ArticleController extends Controller
     {
         $input = $request->validated();
         $teamId = $request->session()->get('team_id');
-        $newCategoriesInput = $input['new-categories'];
-        unset($input['new-categories']);
+        if(isset($input['new-categories'])) {
+            $newCategoriesInput = $input['new-categories'];
+            unset($input['new-categories']);
+            $newCategoryIds = $this->category->saveNewAndGetIds($newCategoriesInput);
+        } else {
+            $newCategoryIds = null;
+        }
         $newArticleInput = $input;
-        $newCategoryIds = $this->category->saveNewAndGetIds($newCategoriesInput);
-        $this->article->saveNewArticle($newArticleInput, $newCategoryIds, $teamId);
+        $this->article->saveNewArticle($newArticleInput, $newCategoryIds, $teamId['id']);
+    }
+
+    public function show($id)
+    {
+        $article = $this->article->find($id);
+        return view('article', compact('article'));
     }
 }
