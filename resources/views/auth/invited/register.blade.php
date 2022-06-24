@@ -8,15 +8,19 @@
                 <div class="card-header">新規登録</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-                        <input type="hidden" name="team_id" value={{ $teamId }}>
-                        <input type="hidden" name="signature" value={{ $signature }}>
+                    {{ Form::open(['route' => 'register', 'method' => 'POST']) }}
+                        {{Form::token()}}
+                        {{ Form::hidden('team_id', $teamId) }}
+                        {{ Form::hidden('signature', $signature) }}
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">名前</label>
+                            {{ Form::label('name', '名前', ['class' => 'col-md-4 col-form-label text-md-end']) }}
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                {{ Form::text('name',
+                                                old('name'),
+                                                $errors->has('name') ? ['class' => 'form-control is-invalid', 'id' => 'name', 'autocomplete' => 'name', 'required' => true, 'autofocus' => true]
+                                                                      : ['class' => 'form-control', 'id' => 'name', 'autocomplete' => 'name', 'required' => true, 'autofocus' => true])
+                                }}
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -27,10 +31,14 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">メールアドレス</label>
+                            {{ Form::label('email', 'メールアドレス', ['class' => 'col-md-4 col-form-label text-md-end']) }}
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                {{ Form::email('email',
+                                                old('email'),
+                                                $errors->has('email') ? ['class' => 'form-control is-invalid', 'id' => 'email', 'autocomplete' => 'email', 'required' => true]
+                                                                      : ['class' => 'form-control', 'id' => 'email', 'autocomplete' => 'email', 'required' => true])
+                                }}
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -41,10 +49,13 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">パスワード</label>
+                            {{ Form::label('password', 'パスワード', ['class' => 'col-md-4 col-form-label text-md-end']) }}
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                {{ Form::password('password',
+                                                  $errors->has('password') ? ['class' => 'form-control is-invalid', 'id' => 'password', 'autocomplete' => 'new-password', 'required' => true]
+                                                                        : ['class' => 'form-control', 'id' => 'password', 'autocomplete' => 'new-password', 'required' => true])
+                                }}
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -55,21 +66,22 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">パスワード確認</label>
+                            {{ Form::label('password-confirm', 'パスワード確認', ['class' => 'col-md-4 col-form-label text-md-end']) }}
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                {{ Form::password('password_confirmation',
+                                                  $errors->has('password_confirmation') ? ['class' => 'form-control is-invalid', 'id' => 'password-confirm', 'autocomplete' => 'new-password', 'required' => true]
+                                                                                        : ['class' => 'form-control', 'id' => 'password-confirm', 'autocomplete' => 'new-password', 'required' => true])
+                                }}
                             </div>
                         </div>
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    新規登録
-                                </button>
+                                {{ Form::submit('新規登録', ['class' => 'btn btn-primary']) }}
                             </div>
                         </div>
-                    </form>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
