@@ -8,14 +8,18 @@
                 <div class="card-header">ログイン</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+                    {{ Form::open(['route' => 'login', 'method' => 'POST']) }}
+                        {{Form::token()}}
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">メールアドレス</label>
+                            {{ Form::label('email', 'メールアドレス', ['class' => 'col-md-4 col-form-label text-md-end']) }}
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                {{ Form::email('email',
+                                                old('email'),
+                                                $errors->has('email') ? ['class' => 'form-control is-invalid', 'id' => 'email', 'autocomplete' => 'email', 'required' => true, 'autofocus' => true]
+                                                                      : ['class' => 'form-control', 'id' => 'email', 'autocomplete' => 'email', 'required' => true, 'autofocus' => true])
+                                }}
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -26,10 +30,13 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">パスワード</label>
+                            {{ Form::label('password', 'パスワード', ['class' => 'col-md-4 col-form-label text-md-end']) }}
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                {{ Form::password('password',
+                                                  $errors->has('email') ? ['class' => 'form-control is-invalid', 'id' => 'password', 'autocomplete' => 'current-password', 'required' => true]
+                                                                        : ['class' => 'form-control', 'id' => 'password', 'autocomplete' => 'current-password', 'required' => true])
+                                }}
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -42,20 +49,16 @@
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        入力内容を保存する
-                                    </label>
+                                    {{ Form::checkbox('remember', null, old('remember') ? 'checked' : '', ['class' => 'form-check-input', 'id' => 'remember'])}}
+                                    {{ Form::label('remember', '入力内容を保存する', ['class' => 'form-check-label']) }}
                                 </div>
                             </div>
                         </div>
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    ログイン
-                                </button>
+                                {{ Form::submit('ログイン', ['class' => 'btn btn-primary']) }}
+
                                 <a class="btn btn-link" href="{{ route('register.invited') }}">新規登録</a>
 
                                 @if (Route::has('password.request'))
@@ -65,7 +68,7 @@
                                 @endif
                             </div>
                         </div>
-                    </form>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
