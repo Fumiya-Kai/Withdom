@@ -14,11 +14,11 @@
       </div>
       <span class="invalid-feedback">{{ $errors->first('categories') }}</span>
       <span class="invalid-feedback">{{ $errors->first('new-categories') }}</span>
-      <ul class="category-list list-group rounded-0" style="display: none; position: fixed;">
+      <ul class="category-list list-group rounded-0" style="display: none; position: absolute; height: 300px; overflow-y: scroll;">
         @foreach($categories as $category)
         <li class="category-item list-group-item">
-          <input class="category-checkbox form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}" data-id="{{ $category->id }}" data-name="{{ $category->name }}" aria-label="...">
-          {{ $category->name }}
+          <input class="category-checkbox form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}" data-name="{{ $category->name }}" aria-label="...">
+          <span class="category-name" id="category-name-{{ $category->name }}">{{ $category->name }}</span>
         </li>
         @endforeach
       </ul>
