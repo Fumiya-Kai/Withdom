@@ -23,7 +23,8 @@ class TeamController extends Controller
     {
         $articles = $this->article->getByTeamId($id);
         $users = $this->team->getMembers($id);
-        return view('team', compact('articles', 'users'));
+        $team = $this->team->find($id);
+        return view('team', compact('articles', 'users', 'team'));
     }
 
     public function create()
