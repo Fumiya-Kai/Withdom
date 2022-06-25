@@ -49,7 +49,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
-                                    {{ Form::checkbox('remember', null, old('remember') ? 'checked' : '', ['class' => 'form-check-input', 'id' => 'remember'])}}
+                                    {{ Form::checkbox('remember', null, !!old('remember'), ['class' => 'form-check-input', 'id' => 'remember'])}}
                                     {{ Form::label('remember', '入力内容を保存する', ['class' => 'form-check-label']) }}
                                 </div>
                             </div>
