@@ -20,7 +20,6 @@ class TeamAuthenticateBySessionParameter
     public function handle(Request $request, Closure $next)
     {
         $routeFrom = str_replace(url(''), '', url()->current());
-        $request->session()->forget('team_id');
 
         if($request->session()->has('team_id')) {
             $teamIdData = $request->session()->get('team_id');
