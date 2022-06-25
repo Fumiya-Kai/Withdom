@@ -42,7 +42,7 @@
                                              : ['class' => 'form-control', 'id' => 'email0', 'placeholder' => '招待するユーザーのメールアドレスを入力'])
       }}
       @endif
-      <span class="invalid-feedback">{{ $errors->first('emails') }}</span>
+      <span class="invalid-feedback message-email">{{ $errors->first('emails') }}</span>
     </div>
     <div class="mt-2">
       {{ Form::button('<img src="https://icongr.am/material/plus.svg?size=30&color=ffffff" alt="招待メンバー追加">',
