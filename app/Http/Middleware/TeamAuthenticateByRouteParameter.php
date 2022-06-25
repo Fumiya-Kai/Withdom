@@ -23,7 +23,7 @@ class TeamAuthenticateByRouteParameter
         foreach($usersTeams as $usersTeam) {
             if($usersTeam->id == $teamId) {
                 if($request->session()->has('team_id')) {
-                    $request->session()->forget('key');
+                    $request->session()->forget('team_id');
                 }
                 session([
                     'team_id' => [
