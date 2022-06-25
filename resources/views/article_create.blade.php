@@ -5,36 +5,44 @@
   <div class="row">
     <div class="display-6">記事作成</div>
   </div>
-  <form action="{{ route('article.store') }}" method="post" class="mt-5">
-    @csrf
+  {{ Form::open(['route' => 'article.store', 'method' => 'POST', 'class' => 'mt-5']) }}
+    {{ Form::token() }}
     <div class="w-50">
-      <label for="category" class="form-label h5">カテゴリー</label>
+      {{ Form::label('category', 'カテゴリー', ['class' => 'form-label h5']) }}
       <div class="category-form form-control text-secondary @if($errors->has('categories') or $errors->has('new-categories')) is-invalid @endif" style="cursor: text;">
-        <input type="text" class="category-input border-0" style="background-color: rgba(0,0,0,0); outline: none;">
+        {{ Form::text(null, null, ['class' => 'category-input border-0', 'style' => 'background-color: rgba(0,0,0,0); outline: none;']) }}
       </div>
       <span class="invalid-feedback">{{ $errors->first('categories') }}</span>
       <span class="invalid-feedback">{{ $errors->first('new-categories') }}</span>
       <ul class="category-list list-group rounded-0" style="display: none; position: absolute; height: 300px; overflow-y: scroll;">
         @foreach($categories as $category)
         <li class="category-item list-group-item">
-          <input class="category-checkbox form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}" data-name="{{ $category->name }}" aria-label="...">
-          <span class="category-name" id="category-name-{{ $category->name }}">{{ $category->name }}</span>
+          {{ Form::checkbox('categories[]', $category->id, !!old('categories[]'), ['class' => 'category-checkbox form-check-input', 'data-name' => $category->name, 'id' => 'category-name-'. $loop->iteration]) }}
+          {{ Form::label('category-name-'. $loop->iteration, $category->name, ['class' => 'category-name', 'id' => 'category-name-'. $category->name]) }}
         </li>
         @endforeach
       </ul>
     </div>
     <div class="w-50 mt-4">
-      <label for="title" class="form-label h5">タイトル</label>
-      <input type="text" id="title" name="title" class="form-control @if($errors->has('title')) is-invalid @endif" placeholder="記事のタイトルを入力">
+      {{ Form::label('title', 'タイトル', ['class' => 'form-label h5']) }}
+      {{ Form::text('title',
+                    old('title'),
+                    $errors->has('title') ? ['class' => 'form-control is-invalid', 'id' => 'title', 'placeholder' => '記事のタイトルを入力']
+                                          : ['class' => 'form-control', 'id' => 'title', 'placeholder' => '記事のタイトルを入力'])
+      }}
       <span class="invalid-feedback">{{ $errors->first('title') }}</span>
     </div>
     <div class="w-50 mt-4">
-      <label for="abstract" class="form-label h5">要約</label>
-      <input type="text" id="abstract" name="abstract" class="form-control @if($errors->has('abstract')) is-invalid @endif" placeholder="記事の要約を入力">
+      {{ Form::label('abstract', '要約', ['class' => 'form-label h5']) }}
+      {{ Form::text('abstract',
+                    old('abstract'),
+                    $errors->has('abstract') ? ['class' => 'form-control is-invalid', 'id' => 'abstract', 'placeholder' => '記事の要約を入力']
+                                             : ['class' => 'form-control', 'id' => 'abstract', 'placeholder' => '記事の要約を入力'])
+      }}
       <span class="invalid-feedback">{{ $errors->first('abstract') }}</span>
     </div>
     <div class="w-75 mt-4">
-      <label for="content" class="form-label h5">本文</label>
+      {{ Form::label('content', '本文', ['class' => 'form-label h5']) }}
       <ul class="nav nav-tabs">
         <li class="nav-item">
           <a href="#editor" class="nav-link active" data-tab-id="#editor" data-bs-toggle="tab">マークダウン</a>
@@ -45,7 +53,11 @@
       </ul>
       <div class="tab-content">
         <div id="editor" class="tab-pane active">
-          <textarea name="content" id="content" class="article-content form-control border-top-0 rounded-0 @if($errors->has('content')) is-invalid @endif" style="min-height: 300px;"></textarea>
+          {{ Form::textarea('content',
+                            old('content'),
+                            $errors->has('content') ? ['class' => 'article-content form-control border-top-0 rounded-0 is-invalid', 'id' => 'content', 'style' => 'min-height: 300px;']
+                                                    : ['class' => 'article-content form-control border-top-0 rounded-0', 'id' => 'content', 'style' => 'min-height: 300px;'])
+          }}
           <span class="invalid-feedback">{{ $errors->first('content') }}</span>
         </div>
         <div id="preview" class="preview tab-pane">
@@ -53,9 +65,9 @@
       </div>
     </div>
     <div class="row mt-3">
-      <button type="submit" class="submit btn btn-warning col-1 offset-5">作成</button>
+      {{ Form::submit('作成', ['class' => 'submit btn btn-warning col-1 offset-5']) }}
     </div>
-  </form>
+  {{ Form::close() }}
 </div>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/darcula.min.css">
 <script type="text/javascript" async
