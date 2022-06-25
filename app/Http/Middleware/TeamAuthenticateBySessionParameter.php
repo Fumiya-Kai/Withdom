@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Article;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,9 @@ class TeamAuthenticateBySessionParameter
      */
     public function handle(Request $request, Closure $next)
     {
+        $routeFrom = str_replace(url(''), '', url()->current());
+        $request->session()->forget('team_id');
+
         if($request->session()->has('team_id')) {
             $teamIdData = $request->session()->get('team_id');
             if(Hash::check('team_id='. $teamIdData['id'], $teamIdData['check'])) {
@@ -28,6 +32,11 @@ class TeamAuthenticateBySessionParameter
                     }
                 }
             }
+        } elseif(preg_match('/\/article\/[0-9]+/', $routeFrom) === 1) {
+            $articleId = str_replace(url(''). '/article/', '', url()->current());
+            if(Article::find($articleId)->user_id === Auth::id()) {
+                return $next($request);
+            };
         }
         return response(view('error.failed_team_authentication'));
     }
