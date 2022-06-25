@@ -13,18 +13,18 @@
       @foreach(old('emails') as $email)
       {{ Form::email('emails[]',
                      $email,
-                     $errors->has('emails') ? ['class' => 'form-control mt-2 is-invalid', 'id' => 'email0', 'placeholder' => '招待するユーザーのメールアドレスを入力']
-                                             : ['class' => 'form-control mt-2', 'id' => 'email0', 'placeholder' => '招待するユーザーのメールアドレスを入力'])
+                     $errors->has('emails') ? ['class' => 'email-form form-control mt-2 is-invalid', 'id' => 'email'. $loop->index, 'placeholder' => '招待するユーザーのメールアドレスを入力']
+                                             : ['class' => 'email-form form-control mt-2', 'id' => 'email'. $loop->index, 'placeholder' => '招待するユーザーのメールアドレスを入力'])
       }}
       @endforeach
       @else
       {{ Form::email('emails[]',
                      null,
-                     $errors->has('emails') ? ['class' => 'form-control is-invalid', 'id' => 'email0', 'placeholder' => '招待するユーザーのメールアドレスを入力']
-                                             : ['class' => 'form-control', 'id' => 'email0', 'placeholder' => '招待するユーザーのメールアドレスを入力'])
+                     $errors->has('emails') ? ['class' => 'email-form form-control is-invalid', 'id' => 'email0', 'placeholder' => '招待するユーザーのメールアドレスを入力']
+                                             : ['class' => 'email-form form-control', 'id' => 'email0', 'placeholder' => '招待するユーザーのメールアドレスを入力'])
       }}
       @endif
-      <span class="invalid-feedback">{{ $errors->first('emails') }}</span>
+      <span class="invalid-feedback message-email">{{ $errors->first('emails') }}</span>
     </div>
     <div class="mt-2">
       {{ Form::button('<img src="https://icongr.am/material/plus.svg?size=30&color=ffffff" alt="招待メンバー追加">',

@@ -1,5 +1,5 @@
 $(function(){
-  let memberCount = 1;
+  let memberCount = $('.email-form').length;
 
   $('.btn-add-form').on('click', function () {
     let formMember =
