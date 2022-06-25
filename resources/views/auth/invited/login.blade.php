@@ -36,7 +36,7 @@
                             <div class="col-md-6">
                                 {{ Form::password('password',
                                                   $errors->has('password') ? ['class' => 'form-control is-invalid', 'id' => 'password', 'autocomplete' => 'current-password', 'required' => true]
-                                                                        : ['class' => 'form-control', 'id' => 'password', 'autocomplete' => 'current-password', 'required' => true])
+                                                                           : ['class' => 'form-control', 'id' => 'password', 'autocomplete' => 'current-password', 'required' => true])
                                 }}
 
                                 @error('password')

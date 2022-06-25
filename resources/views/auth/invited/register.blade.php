@@ -19,7 +19,7 @@
                                 {{ Form::text('name',
                                                 old('name'),
                                                 $errors->has('name') ? ['class' => 'form-control is-invalid', 'id' => 'name', 'autocomplete' => 'name', 'required' => true, 'autofocus' => true]
-                                                                      : ['class' => 'form-control', 'id' => 'name', 'autocomplete' => 'name', 'required' => true, 'autofocus' => true])
+                                                                     : ['class' => 'form-control', 'id' => 'name', 'autocomplete' => 'name', 'required' => true, 'autofocus' => true])
                                 }}
 
                                 @error('name')
@@ -54,7 +54,7 @@
                             <div class="col-md-6">
                                 {{ Form::password('password',
                                                   $errors->has('password') ? ['class' => 'form-control is-invalid', 'id' => 'password', 'autocomplete' => 'new-password', 'required' => true]
-                                                                        : ['class' => 'form-control', 'id' => 'password', 'autocomplete' => 'new-password', 'required' => true])
+                                                                           : ['class' => 'form-control', 'id' => 'password', 'autocomplete' => 'new-password', 'required' => true])
                                 }}
 
                                 @error('password')
