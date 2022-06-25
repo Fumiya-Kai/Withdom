@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     {{ Form::open(['route' => 'register', 'method' => 'POST']) }}
-                        {{Form::token()}}
+                        {{ Form::token() }}
                         {{ Form::hidden('team_id', $teamId) }}
                         {{ Form::hidden('signature', $signature) }}
                         <div class="row mb-3">
