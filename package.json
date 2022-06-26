@@ -24,6 +24,7 @@
         "highlight": "^0.2.4",
         "highlight.js": "^11.5.1",
         "jquery": "^3.6.0",
-        "marked": "^4.0.16"
+        "marked": "^4.0.16",
+        "sanitize-html": "^2.7.0"
     }
 }

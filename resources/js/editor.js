@@ -1,5 +1,6 @@
 const { marked } = require('marked');
 const highlight = require('highlight.js');
+const sanitizeHtml = require('sanitize-html');
 
 // タブの切り替わり機能
 $(function(){
@@ -36,6 +37,18 @@ $(function(){
     }
   });
 
+  // マークダウンのカスタマイズ
+  var renderer = new marked.Renderer();
+  renderer.em = function(text) {
+    var indexNumber = text.indexOf('/');
+    if (indexNumber !== -1 && text.substr(indexNumber - 1, 1) !== "\\") {
+      console.log('1');
+      return '<span style="color:' + text.substr(0, indexNumber) + ';">' + text.substr(indexNumber + 1) + '</span>';
+    }
+    return '<em>' + text.replace('\\/', '/') + '</em>';
+  };
+  marked.use({ renderer });
+
   // テキストエリア入力時の機能
   $('.article-content').on('input', function(){
 
@@ -46,7 +59,12 @@ $(function(){
 
     // マークダウンのコンパイル機能
     let compiledMarkdown = marked($(this).val());
-    $('.preview').html(compiledMarkdown);
+    let html =sanitizeHtml(compiledMarkdown, {
+                allowedAttributes: {
+                  'span': [ 'style' ]
+                }
+              });
+    $('.preview').html(html);
 
     // mathjaxの適用
     let div=$('.preview').html();

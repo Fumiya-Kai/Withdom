@@ -1,5 +1,6 @@
 const { marked } = require('marked');
 const highlight = require('highlight.js');
+const sanitizeHtml = require('sanitize-html');
 
 $(function(){
   // シンタックスハイライトの設定
@@ -25,8 +26,9 @@ $(function(){
 
   let markdownData = $('.article-content').text();
   let compiledMarkdown = marked(markdownData);
+  let html = sanitizeHtml(compiledMarkdown)
   $('.article-content').text('');
-  $('.article-content').html(compiledMarkdown);
+  $('.article-content').html(html);
   let div = $('.article-content').html();
   MathJax.Hub.Configured();
   MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
