@@ -32,7 +32,8 @@
       }}
     </div>
     <div class="row mt-3">
-      {{ Form::submit('作成', ['class' => 'submit btn btn-warning col-1 offset-5']) }}
+      <a href="{{ route('team.show', $teamId) }}" class="btn btn-secondary col-1 offset-5">戻る</a>
+      {{ Form::submit('作成', ['class' => 'submit btn btn-warning col-1 ms-3']) }}
     </div>
   {{ Form::close() }}
 </div>

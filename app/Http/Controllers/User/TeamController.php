@@ -8,6 +8,7 @@ use App\Http\Requests\TeamRequest;
 use App\Mail\NewTeamInvitation;
 use App\Models\Article;
 use App\Models\Team;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
@@ -40,9 +41,11 @@ class TeamController extends Controller
         return redirect()->route('mypage');
     }
 
-    public function showInviteForm()
+    public function showInviteForm(Request $request)
     {
-        return view('invite');
+        $teamIdData = $request->session()->get('team_id');
+        $teamId = $teamIdData['id'];
+        return view('invite', compact('teamId'));
     }
 
     public function inviteToExistingTeam(InviteRequest $request)
