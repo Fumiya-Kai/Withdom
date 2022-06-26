@@ -19,10 +19,12 @@ class ArticleController extends Controller
         $this->category = $category;
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $categories = $this->category->all();
-        return view('article_create', compact('categories'));
+        $teamIdData = $request->session()->get('team_id');
+        $teamId = $teamIdData['id'];
+        return view('article_create', compact('categories', 'teamId'));
     }
 
     public function store(ArticleRequest $request)
