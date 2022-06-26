@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-5 pt-5">
   <div class="row">
-    <div class="display-6">チーム作成</div>
+    <div class="display-6">メンバー招待</div>
   </div>
   {{ Form::open(['route' => 'invite.mail', 'method' => 'POST', 'class' => 'tm-5']) }}
     {{ Form::token() }}
@@ -33,7 +33,7 @@
     </div>
     <div class="row mt-3">
       <a href="{{ route('team.show', $teamId) }}" class="btn btn-secondary col-1 offset-5">戻る</a>
-      {{ Form::submit('作成', ['class' => 'submit btn btn-warning col-1 ms-3']) }}
+      {{ Form::submit('招待', ['class' => 'submit btn btn-warning col-1 ms-3']) }}
     </div>
   {{ Form::close() }}
 </div>
