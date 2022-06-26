@@ -11,6 +11,10 @@
     <header class="navbar fixed-top navbar-dark bg-primary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Tempest</a>
+        <a href="{{ route('mypage') }}" class="col-1 offset-10 text-white text-decoration-none">
+          <img src="https://icongr.am/fontawesome/user-circle.svg?size=30&color=ffffff" class="w-auto" alt="ユーザーアイコン">
+          {{ Auth::user()->name }}
+        </a>
       </div>
     </header>
     @yield('content')
