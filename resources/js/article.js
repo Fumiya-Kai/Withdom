@@ -23,11 +23,11 @@ $(function(){
     }
   });
 
-  let markdownData = $('.article').text();
+  let markdownData = $('.article-content').text();
   let compiledMarkdown = marked(markdownData);
-  $('.article').text('');
-  $('.article').html(compiledMarkdown);
-  let div = $('.article').html();
+  $('.article-content').text('');
+  $('.article-content').html(compiledMarkdown);
+  let div = $('.article-content').html();
   MathJax.Hub.Configured();
   MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
 })
