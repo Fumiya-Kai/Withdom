@@ -47,18 +47,20 @@
     @foreach($articles as $article)
     <div class="col-1 mb-4">
       <div class="card pt-4">
-        <div class="d-flex align-items-center justify-content-center mb-3">
-          <img src="{{ $article->categories->first()->image }}" class="w-auto" alt="記事アイコン">
-        </div>
-        <div class="card-body">
-          <div class="card-title h2 border-bottom">{{ $article->title}}</div>
-          <p class="card-text mb-1">{{ Str::limit($article->abstract, 60) }}</p>
-          <div>
-            @foreach($article->categories as $category)
-            <span class="w-auto badge rounded-pill bg-secondary bg-opacity-25 text-dark">{{ $category->name }}</span>
-            @endforeach
+        <a href="{{ route('article.show', $article->id) }}" class="text-reset text-decoration-none">
+          <div class="d-flex align-items-center justify-content-center mb-3">
+            <img src="{{ $article->categories->first()->image }}" class="w-auto" alt="記事アイコン">
           </div>
-        </div>
+          <div class="card-body">
+            <div class="card-title h2 border-bottom">{{ $article->title}}</div>
+            <p class="card-text mb-1">{{ Str::limit($article->abstract, 60) }}</p>
+            <div>
+              @foreach($article->categories as $category)
+              <span class="w-auto badge rounded-pill bg-secondary bg-opacity-25 text-dark">{{ $category->name }}</span>
+              @endforeach
+            </div>
+          </div>
+        </a>
       </div>
     </div>
     @endforeach
