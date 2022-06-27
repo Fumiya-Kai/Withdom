@@ -43,6 +43,9 @@
     </div>
     <div class="w-75 mt-4">
       {{ Form::label('content', '本文', ['class' => 'form-label h5']) }}
+      <button class="btn btn-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">? 書式</button>
+      @component('components.format_offcanvas')
+      @endcomponent
       <ul class="nav nav-tabs">
         <li class="nav-item">
           <a href="#editor" class="nav-link active" data-tab-id="#editor" data-bs-toggle="tab">マークダウン</a>

@@ -1,6 +1,7 @@
 const { marked } = require('marked');
 const highlight = require('highlight.js');
 const sanitizeHtml = require('sanitize-html');
+const bootstrap = require('bootstrap');
 
 // タブの切り替わり機能
 $(function(){
@@ -59,5 +60,10 @@ $(function(){
     let div=$('.preview').html();
     MathJax.Hub.Configured();
     MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+  });
+
+  var offcanvasElementList = [].slice.call($('.offcanvas'));
+  var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
+    return new bootstrap.Offcanvas(offcanvasEl)
   });
 })
