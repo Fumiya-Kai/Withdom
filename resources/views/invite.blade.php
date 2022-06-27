@@ -1,7 +1,7 @@
 @extends('common.user')
 
 @section('content')
-<div class="container mt-5 pt-5">
+<div class="container mt-5 py-5">
   <div class="row">
     <div class="display-6">メンバー招待</div>
   </div>

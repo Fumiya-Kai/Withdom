@@ -1,7 +1,7 @@
 @extends('common.user')
 
 @section('content')
-<div class="container mt-5 pt-5">
+<div class="container mt-5 py-5">
   <div class="row pb-3 border-bottom border-dark">
     <img src="https://icongr.am/fontawesome/user-circle.svg?size=140&color=70e6a9" class="w-auto" alt="ユーザーアイコン">
     <div class="col d-flex align-items-center display-3">{{ Auth::user()->name }}</div>
