@@ -37,18 +37,6 @@ $(function(){
     }
   });
 
-  // // マークダウンのカスタマイズ
-  // var renderer = new marked.Renderer();
-  // renderer.em = function(text) {
-  //   var indexNumber = text.indexOf('/');
-  //   if (indexNumber !== -1 && text.substr(indexNumber - 1, 1) !== "\\") {
-  //     console.log('1');
-  //     return '<span style="color:' + text.substr(0, indexNumber) + ';">' + text.substr(indexNumber + 1) + '</span>';
-  //   }
-  //   return '<em>' + text.replace('\\/', '/') + '</em>';
-  // };
-  // marked.use({ renderer });
-
   // テキストエリア入力時の機能
   $('.article-content').on('input', function(){
 
