@@ -10,6 +10,17 @@
     <div class="w-50">
       {{ Form::label('category', 'カテゴリー', ['class' => 'form-label h5']) }}
       <div class="category-form form-control text-secondary @if($errors->has('categories') or $errors->has('new-categories')) is-invalid @endif" style="cursor: text;">
+        @if(!!old('categories'))
+        @foreach (old('categories') as $categoryId)
+        <div class="added-category-badge badge rounded-pill bg-secondary bg-opacity-25 me-1 text-dark" id="category-badge-{{ \App\Models\Category::find($categoryId)->name }}">{{ \App\Models\Category::find($categoryId)->name }}</div>
+        @endforeach
+        @endif
+        @if(!!old('new-categories'))
+        @foreach (old('new-categories') as $newCategory)
+        <div class="added-category-badge badge rounded-pill bg-secondary bg-opacity-25 me-1 text-dark" id="category-badge-{{ $newCategory }}">{{ $newCategory }}</div>
+        <input name="new-categories[]" type="hidden" value="{{ $newCategory }}" id="hiddeninput{{ $newCategory }}">
+        @endforeach
+        @endif
         {{ Form::text(null, null, ['class' => 'category-input border-0', 'style' => 'background-color: rgba(0,0,0,0); outline: none;']) }}
       </div>
       <span class="invalid-feedback">{{ $errors->first('categories') }}</span>
