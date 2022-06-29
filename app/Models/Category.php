@@ -19,12 +19,13 @@ class Category extends Model
     public function saveNewAndGetIds($newCategoryInput)
     {
         $newCategories = [];
-        DB::transaction(function() use ($newCategoryInput, $newCategories) {
-            foreach($newCategoryInput as $newCategory) {
-                $newId = $this->create(['name' => $newCategory])->id;
-                array_push($newCategories, $newId);
-            };
-        });
+        $newCategories = DB::transaction(function() use ($newCategoryInput, $newCategories) {
+                             foreach($newCategoryInput as $newCategory) {
+                                 $newId = $this->create(['name' => $newCategory])->id;
+                                 array_push($newCategories, $newId);
+                             };
+                             return $newCategories;
+                         });
 
         return $newCategories;
     }
