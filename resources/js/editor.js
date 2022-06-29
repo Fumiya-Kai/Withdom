@@ -50,9 +50,7 @@ $(function(){
     let compiledMarkdown = marked($(this).val());
     let html =sanitizeHtml(compiledMarkdown, {
       allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'font' ]),
-      allowedAttributes: {
-        font : [ 'color' ]
-      }
+      allowedAttributes: false
     });
     $('.preview').html(html);
 
