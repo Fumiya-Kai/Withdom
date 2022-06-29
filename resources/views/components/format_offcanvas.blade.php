@@ -41,11 +41,11 @@
       </tr>
     </table>
     <br>
-    など <a href="https://qiita.com/kamorits/items/6f342da395ad57468ae3">こちら</a>がわかりやすい
+    など <a href="https://qiita.com/kamorits/items/6f342da395ad57468ae3" target="_blank">こちら</a>がわかりやすい
     <h5 class="text-info mt-5">数式</h5>
     <div>
-      <a href="https://www.latex-project.org/">Latex</a>に準拠<br>
-      コマンドは<a href="http://www.www1.kiy.jp/~yoka/LaTeX/latex.html">こちら</a>がわかりやすい
+      <a href="https://www.latex-project.org/" target="_blank">Latex</a>に準拠<br>
+      コマンドは<a href="http://www.www1.kiy.jp/~yoka/LaTeX/latex.html" target="_blank">こちら</a>がわかりやすい
     </div>
   </div>
 </div>
