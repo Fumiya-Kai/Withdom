@@ -66,4 +66,9 @@ class LoginController extends Controller
             abort(401);
         }
     }
+
+    protected function loggedOut(Request $request)
+    {
+        return redirect(route('login'));
+    }
 }
