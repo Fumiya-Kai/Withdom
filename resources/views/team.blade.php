@@ -56,7 +56,11 @@
       <div class="card pt-4">
         <a href="{{ route('article.show', $article->id) }}" class="text-reset text-decoration-none">
           <div class="d-flex align-items-center justify-content-center mb-3">
+            @if(!!($article->categories->first()->image))
             <img src="{{ $article->categories->first()->image }}" class="w-auto" alt="記事アイコン">
+            @else
+            <img src="https://icongr.am/fontawesome/book.svg?size=128&color=currentColor" class="w-auto" alt="記事アイコン">
+            @endif
           </div>
           <div class="card-body">
             <div class="card-title h2 border-bottom">{{ $article->title }}</div>
