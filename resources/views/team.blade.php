@@ -76,5 +76,8 @@
     </div>
     @endforeach
   </div>
+  <div class="row">
+    {{ $articles->appends(request()->input())->links('pagination::bootstrap-5') }}
+  </div>
 </div>
 @endsection

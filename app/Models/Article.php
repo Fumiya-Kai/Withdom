@@ -12,7 +12,7 @@ class Article extends Model
 {
     use HasFactory;
 
-    const ARTICLES_PER_PAGE = 10;
+    const ARTICLES_PER_PAGE = 20;
 
     protected $fillable = [
         'title',
