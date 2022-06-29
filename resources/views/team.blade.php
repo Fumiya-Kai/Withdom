@@ -63,7 +63,7 @@
             @endif
           </div>
           <div class="card-body">
-            <div class="card-title h2 border-bottom">{{ $article->title }}</div>
+            <div class="card-title h2 border-bottom">{{ Str::limit($article->title, 12) }}</div>
             <p class="card-text mb-1">{{ Str::limit($article->abstract, 60) }}</p>
             <div>
               @foreach($article->categories as $category)
