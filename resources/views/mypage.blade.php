@@ -52,7 +52,7 @@
             @if(!!($article->categories->first()->image))
             <img src="{{ $article->categories->first()->image }}" class="w-auto" alt="記事アイコン">
             @else
-            <img src="https://icongr.am/fontawesome/book.svg?size=128&color=currentColor" class="w-auto" alt="記事アイコン">
+            <img src="https://icongr.am/fontawesome/book.svg?size=100" class="w-auto" alt="記事アイコン">
             @endif
           </div>
           <div class="card-body">
