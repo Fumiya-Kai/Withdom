@@ -19,8 +19,8 @@ class Category extends Model
     public function saveNewAndGetIds($newCategoryInput)
     {
         $newCategories = [];
-        DB::transaction(function() use ($newCategoryInput) {
-            foreach($newCategoryInput['new-categories'] as $newCategory) {
+        DB::transaction(function() use ($newCategoryInput, $newCategories) {
+            foreach($newCategoryInput as $newCategory) {
                 $newId = $this->create(['name' => $newCategory])->id;
                 array_push($newCategories, $newId);
             };
