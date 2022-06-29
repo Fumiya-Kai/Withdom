@@ -60,7 +60,7 @@
           </div>
           <div class="card-body">
             <div class="card-title h2 border-bottom">{{ $article->title }}</div>
-            <p class="card-text mb-1">{{ $article->abstract }}</p>
+            <p class="card-text mb-1">{{ Str::limit($article->abstract, 60) }}</p>
             <div>
               @foreach($article->categories as $category)
               <span class="w-auto badge rounded-pill bg-secondary bg-opacity-25 text-dark">{{ $category->name}}</span>
