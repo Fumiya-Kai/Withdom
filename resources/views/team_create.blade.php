@@ -6,7 +6,6 @@
     <div class="display-6">チーム作成</div>
   </div>
   {{ Form::open(['route' => 'team.store', 'method' => 'POST', 'class' => 'mt-5']) }}
-    {{ Form::token() }}
     <div class="w-50">
       {{ Form::label('name', 'チーム名', ['class' => 'form-label h5']) }}
       {{ Form::text('name',

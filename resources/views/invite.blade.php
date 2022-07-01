@@ -6,7 +6,6 @@
     <div class="display-6">メンバー招待</div>
   </div>
   {{ Form::open(['route' => 'invite.mail', 'method' => 'POST', 'class' => 'tm-5']) }}
-    {{ Form::token() }}
     <div class="add-members w-50 mt-4">
       {{ Form::label('email', 'ユーザー招待', ['class' => 'form-label h5']) }}
       @if(!!old('emails'))

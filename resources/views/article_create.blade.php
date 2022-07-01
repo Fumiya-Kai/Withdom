@@ -6,7 +6,6 @@
     <div class="display-6">記事作成</div>
   </div>
   {{ Form::open(['route' => 'article.store', 'method' => 'POST', 'class' => 'mt-5']) }}
-    {{ Form::token() }}
     <div class="w-50">
       {{ Form::label('category', 'カテゴリー', ['class' => 'form-label h5']) }}
       <div class="category-form form-control text-secondary @if($errors->has('categories') or $errors->has('new-categories')) is-invalid @endif" style="cursor: text;">

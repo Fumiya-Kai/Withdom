@@ -14,14 +14,6 @@
       {{ $article->content }}
     </div>
   </div>
-  {{-- <div class="row">
-    {{ $article->content }}
-    <div class="article-content card">
-      <h1 class="display-1">{{ $article->title }}</h1>
-      <p>{{ $article->abstract }}</p>
-      {{ $article->content }}
-    </div> --}}
-  </div>
 </div>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/darcula.min.css">
 <script type="text/javascript" async

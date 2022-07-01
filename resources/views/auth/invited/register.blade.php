@@ -9,7 +9,6 @@
 
                 <div class="card-body">
                     {{ Form::open(['route' => 'register', 'method' => 'POST']) }}
-                        {{ Form::token() }}
                         <div class="row mb-3">
                             {{ Form::label('name', '名前', ['class' => 'col-md-4 col-form-label text-md-end']) }}
 
