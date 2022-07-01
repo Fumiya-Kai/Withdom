@@ -30,26 +30,6 @@
   <div class="row mt-5">
     <div class="h1">記事</div>
   </div>
-  <form action="" method="GET" class="row mt-3">
-    <div class="col">
-      <label for="user" class="form-label h5">ユーザー</label>
-      <input type="text" class="form-control bg-white" id="user" placeholder="記事を書いたユーザーで検索">
-    </div>
-    <div class="col">
-      <label for="category" class="form-label h5">カテゴリー</label>
-      <input type="text" class="form-control bg-white" id="category" placeholder="記事のカテゴリーで検索">
-    </div>
-    <div class="col">
-      <label for="keyword" class="form-label h5">キーワード</label>
-      <input type="text" class="form-control bg-white" id="keyword" placeholder="キーワードで検索">
-    </div>
-    <div class="col d-flex align-items-end justify-content-center">
-      <button type="submit" class="btn btn-warning w-50">
-        <img src="https://icongr.am/fontawesome/search.svg?size=20&color=currentColor" alt="検索アイコン">
-        検索
-      </button>
-    </div>
-  </form>
   <div class="row row-cols-1 row-cols-md-5 mt-5">
     @foreach($articles as $article)
     <div class="col-1 mb-4">
