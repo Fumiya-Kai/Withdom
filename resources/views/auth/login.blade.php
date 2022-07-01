@@ -59,8 +59,6 @@
                             <div class="col-md-8 offset-md-4">
                                 {{ Form::submit('ログイン', ['class' => 'btn btn-primary']) }}
 
-                                <a class="btn btn-link" href="{{ route('register.invited') }}">新規登録</a>
-
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         パスワードを忘れた
