@@ -45,19 +45,26 @@ class LoginController extends Controller
         if (! $request->hasValidSignature()) {
             abort(401);
         }
-        $teamId = $request->team_id;
-        $signature = Hash::make('team_id='. $teamId);
-        return view('auth.invited.login', compact('teamId', 'signature'));
+        session([
+            'team_id' => [
+                'id' => $request->team_id,
+                'check' => Hash::make('team_id='. $request->team_id)
+            ]
+        ]);
+        return view('auth.invited.login');
     }
 
     public function authenticated(Request $request, $user)
     {
-        $input = $request->only('team_id', 'signature');
+        if(! $request->session()->has('team_id')) {
+            abort(401);
+        }
+        $teamIdData = $request->session()->get('team_id');
         $routeFrom = parse_url(url()->previous());
         if($routeFrom['path'] === '/login_invited') {
-            if(Hash::check('team_id='. $input['team_id'], $input['signature'])) {
-                $user->teams()->sync($input['team_id']);
-                return redirect()->route('team.show', $input['team_id']);
+            if(Hash::check('team_id='. $teamIdData['id'], $teamIdData['check'])) {
+                $user->teams()->sync($teamIdData['id']);
+                return redirect()->route('team.show', $teamIdData['id']);
             } else {
                 abort(401);
             }

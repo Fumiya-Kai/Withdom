@@ -10,8 +10,6 @@
                 <div class="card-body">
                     {{ Form::open(['route' => 'login', 'method' => 'POST']) }}
                         {{ Form::token() }}
-                        {{ Form::hidden('team_id', $teamId) }}
-                        {{ Form::hidden('signature', $signature) }}
                         <div class="row mb-3">
                             {{ Form::label('email', 'メールアドレス', ['class' => 'col-md-4 col-form-label text-md-end']) }}
 
@@ -59,7 +57,7 @@
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 {{ Form::submit('ログイン', ['class' => 'btn btn-primary']) }}
-                                <a class="btn btn-link" href="{{ route('register.invited', ['team_id' => $teamId, 'signature' => $signature]) }}">新規登録</a>
+                                <a class="btn btn-link" href="{{ route('register.invited') }}">新規登録</a>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">

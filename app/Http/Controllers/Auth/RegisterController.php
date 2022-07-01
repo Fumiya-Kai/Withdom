@@ -74,21 +74,25 @@ class RegisterController extends Controller
 
     public function showInvitedRegister(Request $request)
     {
-        if (!Hash::check('team_id='. $request->team_id, $request->signature)) {
-            abort(401);
+        if($request->session()->has('team_id')) {
+            $teamIdData = $request->session()->get('team_id');
+            if(Hash::check('team_id='. $teamIdData['id'], $teamIdData['check'])) {
+                return view('auth.invited.register');
+            }
         }
-        $teamId = $request->team_id;
-        $signature = $request->signature;
-        return view('auth.invited.register', compact('teamId', 'signature'));
+        abort(401);
     }
 
     public function registered(Request $request, $user)
     {
-        $input = $request->only('team_id', 'signature');
+        if(! $request->session()->has('team_id')) {
+            abort(401);
+        }
+        $teamIdData = $request->session()->get('team_id');
         if($request->path() === 'register_invited') {
-            if(Hash::check('team_id='. $input['team_id'], $input['signature'])) {
-                $user->teams()->sync($input['team_id']);
-                return redirect()->route('team.show', $input['team_id']);
+            if(Hash::check('team_id='. $teamIdData['id'], $teamIdData['check'])) {
+                $user->teams()->sync($teamIdData['id']);
+                return redirect()->route('team.show', $teamIdData['id']);
             } else {
                 abort(401);
             }
