@@ -53,14 +53,15 @@ class LoginController extends Controller
     public function authenticated(Request $request, $user)
     {
         $input = $request->only('team_id', 'signature');
-        if($request->path() === 'login_invited') {
+        $routeFrom = parse_url(url()->previous());
+        if($routeFrom['path'] === '/login_invited') {
             if(Hash::check('team_id='. $input['team_id'], $input['signature'])) {
                 $user->teams()->sync($input['team_id']);
-                return redirect()->route('team.show');
+                return redirect()->route('team.show', $input['team_id']);
             } else {
                 abort(401);
             }
-        } elseif($request->path() === 'login') {
+        } elseif($routeFrom['path'] === '/login') {
             return redirect()->route('mypage');
         } else {
             abort(401);
