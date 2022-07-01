@@ -74,7 +74,7 @@ class RegisterController extends Controller
 
     public function showInvitedRegister(Request $request)
     {
-        if (Hash::check('team_id='. $request->team_id, $request->signature)) {
+        if (!Hash::check('team_id='. $request->team_id, $request->signature)) {
             abort(401);
         }
         $teamId = $request->team_id;
@@ -88,7 +88,7 @@ class RegisterController extends Controller
         if($request->path() === 'register_invited') {
             if(Hash::check('team_id='. $input['team_id'], $input['signature'])) {
                 $user->teams()->sync($input['team_id']);
-                return redirect()->route('team.show');
+                return redirect()->route('team.show', $input['team_id']);
             } else {
                 abort(401);
             }
