@@ -19,7 +19,7 @@ class TeamAuthenticateBySessionParameter
      */
     public function handle(Request $request, Closure $next)
     {
-        $routeFrom = str_replace(url(''), '', url()->current());
+        $routeTo = str_replace(url(''), '', url()->current());
 
         if($request->session()->has('team_id')) {
             $teamIdData = $request->session()->get('team_id');
@@ -31,7 +31,7 @@ class TeamAuthenticateBySessionParameter
                     }
                 }
             }
-        } elseif(preg_match('/\/article\/[0-9]+/', $routeFrom) === 1) {
+        } elseif(preg_match('/\/article\/[0-9]+/', $routeTo) === 1) {
             $articleId = str_replace(url(''). '/article/', '', url()->current());
             if(Article::find($articleId)->user_id === Auth::id()) {
                 return $next($request);
