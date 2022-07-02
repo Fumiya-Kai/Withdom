@@ -31,4 +31,6 @@ Route::get('/login_invited', [App\Http\Controllers\Auth\LoginController::class, 
 Route::get('/register_invited', [App\Http\Controllers\Auth\RegisterController::class, 'showInvitedRegister'])->name('register.invited');
 Route::post('/register_invited', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return redirect()->route('mypage');
+});
