@@ -41,7 +41,7 @@ class ArticleController extends Controller
         $newArticleInput = $input;
         $this->article->saveNewArticle($newArticleInput, $newCategoryIds, $teamId['id']);
 
-        return redirect()->route('team.show', $teamId);
+        return redirect()->route('team.show', $teamId['id']);
     }
 
     public function show($id)
