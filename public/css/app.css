@@ -11293,7 +11293,7 @@ textarea.form-control-lg {
   box-shadow: 0 0 4px 0 #007bff !important;
 }
 
-.btn:active {
+.btn {
   box-shadow: none !important;
 }
 
