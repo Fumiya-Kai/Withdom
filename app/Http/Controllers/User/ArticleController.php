@@ -24,7 +24,7 @@ class ArticleController extends Controller
         $categories = $this->category->all();
         $teamIdData = $request->session()->get('team_id');
         $teamId = $teamIdData['id'];
-        return view('article_create', compact('categories', 'teamId'));
+        return view('article.create', compact('categories', 'teamId'));
     }
 
     public function store(ArticleRequest $request)
@@ -47,6 +47,6 @@ class ArticleController extends Controller
     public function show($id)
     {
         $article = $this->article->find($id);
-        return view('article', compact('article'));
+        return view('article.show', compact('article'));
     }
 }

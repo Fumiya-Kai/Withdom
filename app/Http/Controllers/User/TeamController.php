@@ -25,12 +25,12 @@ class TeamController extends Controller
         $articles = $this->article->getByTeamId($id);
         $users = $this->team->getMembers($id);
         $team = $this->team->find($id);
-        return view('team', compact('articles', 'users', 'team'));
+        return view('team.show', compact('articles', 'users', 'team'));
     }
 
     public function create()
     {
-        return view('team_create');
+        return view('team.create');
     }
 
     public function store(TeamRequest $request)
@@ -45,7 +45,7 @@ class TeamController extends Controller
     {
         $teamIdData = $request->session()->get('team_id');
         $teamId = $teamIdData['id'];
-        return view('invite', compact('teamId'));
+        return view('team.invite', compact('teamId'));
     }
 
     public function inviteToExistingTeam(InviteRequest $request)
