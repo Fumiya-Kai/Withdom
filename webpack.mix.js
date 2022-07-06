@@ -17,6 +17,7 @@ mix.js('resources/js/app.js', 'public/js')
    .js('resources/js/editor.js', 'public/js')
    .js('resources/js/article.js', 'public/js')
    .js('resources/js/common.js', 'public/js')
+   .css('resources/css/app.css', 'public/css')
    .sass('resources/sass/app.scss', 'public/css')
    .sourceMaps()
    .autoload({

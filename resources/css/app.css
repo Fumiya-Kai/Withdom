@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+/* bootstrapのカスタム */
+.form-control:focus {
+  box-shadow: 0 0 4px 0 #007bff !important;
+}
+
+.btn:active {
+  box-shadow: none !important;
+}
+
+/* ヘッダーーのユーザー部分 */
+.user-head {
+  cursor: pointer;
+}
+
+/* 記事作成画面 */
+.category-form {
+  cursor: text;
+}
+
+.category-input {
+  background-color: rgba(0,0,0,0);
+  outline: none;
+}
+
+.category-list {
+  display: none;
+  position: absolute;
+  height: 300px;
+  overflow-y: scroll;
+}

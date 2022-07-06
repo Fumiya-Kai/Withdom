@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Tempest</title>
     <meta name="description" content="学んだことのアウトプット、チームでの共有が可能" />
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <script src="{{ mix('js/common.js') }}"></script>
   </head>
   <body>
     <header class="navbar fixed-top navbar-dark bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('mypage') }}">Tempest</a>
+        <a class="navbar-brand fs-3" href="{{ route('mypage') }}">Tempest</a>
         @guest
         @else
-        <div class="col-1 offset-10 text-white">
+        <div class="user-head col-1 offset-10 text-white">
           <div class="dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown">
             <img src="https://icongr.am/fontawesome/user-circle.svg?size=30&color=ffffff" class="w-auto" alt="ユーザーアイコン">
             {{ Auth::user()->name }}

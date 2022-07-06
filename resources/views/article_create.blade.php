@@ -8,7 +8,7 @@
   {{ Form::open(['route' => 'article.store', 'method' => 'POST', 'class' => 'mt-5']) }}
     <div class="w-50">
       {{ Form::label('category', 'カテゴリー', ['class' => 'form-label h5']) }}
-      <div class="category-form form-control text-secondary @if($errors->has('categories') or $errors->has('new-categories')) is-invalid @endif" style="cursor: text;">
+      <div class="category-form form-control text-secondary @if($errors->has('categories') or $errors->has('new-categories')) is-invalid @endif">
         @if(!!old('categories'))
         @foreach (old('categories') as $categoryId)
         <div class="added-category-badge badge rounded-pill bg-secondary bg-opacity-25 me-1 text-dark" id="category-badge-{{ \App\Models\Category::find($categoryId)->name }}">{{ \App\Models\Category::find($categoryId)->name }}</div>
@@ -20,11 +20,11 @@
         <input name="new-categories[]" type="hidden" value="{{ $newCategory }}" id="hiddeninput{{ $newCategory }}">
         @endforeach
         @endif
-        {{ Form::text(null, null, ['class' => 'category-input border-0', 'style' => 'background-color: rgba(0,0,0,0); outline: none;']) }}
+        {{ Form::text(null, null, ['class' => 'category-input border-0']) }}
       </div>
       <span class="invalid-feedback">{{ $errors->first('categories') }}</span>
       <span class="invalid-feedback">{{ $errors->first('new-categories') }}</span>
-      <ul class="category-list list-group rounded-0" style="display: none; position: absolute; height: 300px; overflow-y: scroll;">
+      <ul class="category-list list-group rounded-0">
         @foreach($categories as $category)
         <li class="category-item list-group-item">
           {{ Form::checkbox('categories[]', $category->id, !!old('categories[]'), ['class' => 'category-checkbox form-check-input', 'data-name' => $category->name, 'id' => 'category-name-'. $loop->iteration]) }}
