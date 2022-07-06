@@ -75,7 +75,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                {{ Form::submit('新規登録', ['class' => 'btn btn-primary']) }}
+                                {{ Form::submit('新規登録', ['class' => 'submit btn btn-primary']) }}
                             </div>
                         </div>
                     {{ Form::close() }}

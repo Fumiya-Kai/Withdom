@@ -56,7 +56,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                {{ Form::submit('ログイン', ['class' => 'btn btn-primary']) }}
+                                {{ Form::submit('ログイン', ['class' => 'submit btn btn-primary']) }}
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
