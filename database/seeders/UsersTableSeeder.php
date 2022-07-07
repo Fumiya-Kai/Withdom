@@ -19,14 +19,9 @@ class UsersTableSeeder extends Seeder
     {
         $data = [
             [
-                'name' => 'LimuruTempest',
-                'email' => Str::random(10).'@example.com',
-                'password' => Hash::make('password'),
-            ],
-            [
-                'name' => 'LuminousValentine',
-                'email' => Str::random(10).'@example.com',
-                'password' => Hash::make('password'),
+                'name' => 'guest',
+                'email' => 'guest@guest.com',
+                'password' => Hash::make('guestpass'),
             ],
         ];
 

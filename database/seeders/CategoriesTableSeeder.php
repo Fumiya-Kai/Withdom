@@ -29,12 +29,24 @@ class CategoriesTableSeeder extends Seeder
                 'image' => 'https://icongr.am/devicon/javascript-original.svg?size=100',
             ],
             [
-                'name' => 'PHP',
-                'image' => 'https://icongr.am/devicon/php-original.svg?size=100',
+                'name' => 'TypeScript',
+                'image' => 'https://icongr.am/devicon/typescript-original.svg?size=100',
             ],
             [
-                'name' => 'MySQL',
-                'image' => 'https://icongr.am/devicon/mysql-original-wordmark.svg?size=100',
+                'name' => 'Vue',
+                'image' => 'https://icongr.am/devicon/vuejs-original.svg?size=100',
+            ],
+            [
+                'name' => 'React',
+                'image' => 'https://icongr.am/devicon/react-original.svg?size=100',
+            ],
+            [
+                'name' => 'Angular',
+                'image' => 'https://icongr.am/devicon/angularjs-original.svg?size=100',
+            ],
+            [
+                'name' => 'PHP',
+                'image' => 'https://icongr.am/devicon/php-original.svg?size=100',
             ],
             [
                 'name' => 'Laravel',
@@ -47,6 +59,22 @@ class CategoriesTableSeeder extends Seeder
             [
                 'name' => 'Django',
                 'image' => 'https://icongr.am/devicon/django-original.svg?size=100',
+            ],
+            [
+                'name' => 'MySQL',
+                'image' => 'https://icongr.am/devicon/mysql-original-wordmark.svg?size=100',
+            ],
+            [
+                'name' => 'docker',
+                'image' => 'https://icongr.am/devicon/docker-original.svg?size=100',
+            ],
+            [
+                'name' => 'Linux',
+                'image' => 'https://icongr.am/devicon/linux-original.svg?size=100',
+            ],
+            [
+                'name' => 'AWS',
+                'image' => 'https://icongr.am/devicon/amazonwebservices-original.svg?size=100',
             ],
         ];
 
