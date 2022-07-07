@@ -37,7 +37,9 @@ class TeamController extends Controller
     {
         $input = $request->validated();
         $teamId = $this->team->createTeamAndGetId($input, Auth::id());
-        $this->invite($input['emails'], Auth::user()->name, $input['name'], $teamId);
+        if(isset($input['emails'])) {
+            $this->invite($input['emails'], Auth::user()->name, $input['name'], $teamId);
+        }
         return redirect()->route('mypage');
     }
 
