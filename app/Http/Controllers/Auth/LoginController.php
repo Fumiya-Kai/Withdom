@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -75,6 +76,18 @@ class LoginController extends Controller
         } else {
             abort(401);
         }
+    }
+
+    public function guestLogin()
+    {
+        $email = 'guest@guest.com';
+        $password = 'guestpass';
+
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            return redirect()->route('mypage');
+        }
+
+        return redirect('/');
     }
 
     protected function loggedOut()

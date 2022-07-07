@@ -30,6 +30,7 @@ Auth::routes(['register' => false]);
 Route::get('/login_invited', [App\Http\Controllers\Auth\LoginController::class, 'showInvitedLogin'])->name('login.invited');
 Route::get('/register_invited', [App\Http\Controllers\Auth\RegisterController::class, 'showInvitedRegister'])->name('register.invited');
 Route::post('/register_invited', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
+Route::get('/login/guest', [App\Http\Controllers\Auth\LoginController::class, 'guestLogin'])->name('login.guest');
 
 Route::get('/', function () {
     return redirect()->route('mypage');

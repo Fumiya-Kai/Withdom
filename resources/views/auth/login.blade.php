@@ -64,7 +64,7 @@
                                     </a>
                                 @endif
 
-                                <a href="" class="btn btn-outline-dark ms-4">ゲストログイン</a>
+                                <a href="{{ route('login.guest') }}" class="btn btn-outline-dark ms-4">ゲストログイン</a>
                             </div>
                         </div>
                     {{ Form::close() }}
