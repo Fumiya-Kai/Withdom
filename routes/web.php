@@ -22,8 +22,8 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::resource('team', App\Http\Controllers\User\TeamController::class)->only('create', 'store');
     Route::get('/team/{teamId}', [App\Http\Controllers\User\TeamController::class, 'show'])->middleware('auth.team.route')->name('team.show');
-    Route::get('/invite', [App\Http\Controllers\User\TeamController::class, 'showInviteForm'])->name('invite.form');
-    Route::post('/invite', [App\Http\Controllers\User\TeamController::class, 'inviteToExistingTeam'])->name('invite.mail');
+    Route::get('/invite', [App\Http\Controllers\User\TeamController::class, 'showInviteForm'])->middleware('prevent.guest')->name('invite.form');
+    Route::post('/invite', [App\Http\Controllers\User\TeamController::class, 'inviteToExistingTeam'])->middleware('prevent.guest')->name('invite.mail');
 });
 
 Auth::routes(['register' => false]);

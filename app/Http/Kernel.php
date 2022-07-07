@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'auth.team.route' => \App\Http\Middleware\TeamAuthenticateByRouteParameter::class,
         'auth.team.session' => \App\Http\Middleware\TeamAuthenticateBySessionParameter::class,
+        'prevent.guest' => \App\Http\Middleware\PreventGuestRequest::class,
     ];
 }
