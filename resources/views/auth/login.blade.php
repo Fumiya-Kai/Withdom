@@ -63,6 +63,8 @@
                                         パスワードを忘れた
                                     </a>
                                 @endif
+
+                                <a href="" class="btn btn-outline-dark ms-4">ゲストログイン</a>
                             </div>
                         </div>
                     {{ Form::close() }}
