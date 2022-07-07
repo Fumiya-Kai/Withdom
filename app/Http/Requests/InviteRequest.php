@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Rules\isEmailAddress;
+use App\Rules\preventGuest;
 use App\Rules\uniqueEmailAddress;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -27,7 +28,7 @@ class InviteRequest extends FormRequest
     {
         $postData = $this->all();
         return [
-            'emails' => empty($postData['emails'][0])? '' : [new isEmailAddress, new uniqueEmailAddress],
+            'emails' => empty($postData['emails'][0])? '' : [new isEmailAddress, new uniqueEmailAddress, new preventGuest],
         ];
     }
 }
