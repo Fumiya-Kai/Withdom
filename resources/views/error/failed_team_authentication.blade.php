@@ -6,7 +6,7 @@
     <img src="https://icongr.am/material/alert.svg?color=ffc107" style="height: 50px;" alt="アラートアイコン">
   </div>
   <div class="row justify-content-center h3">
-    チームの認証に失敗しました。チームIDに間違いがあります。
+    不正なアクセスです。
   </div>
   <div class="row mt-4">
     <div class="w-auto offset-md-9 offset-7">
