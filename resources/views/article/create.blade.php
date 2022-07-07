@@ -8,6 +8,19 @@
   {{ Form::open(['route' => 'article.store', 'method' => 'POST', 'class' => 'mt-5']) }}
     <div class="w-50">
       {{ Form::label('category', 'カテゴリー', ['class' => 'form-label h5']) }}
+      @if(Auth::id() === 1)
+      <div class="category-form form-control">
+        {{ Form::button(null, ['class' => 'category-input border-0']) }}
+      </div>
+      <ul class="category-list list-group rounded-0">
+        @foreach($categories as $category)
+        <li class="category-item list-group-item">
+          {{ Form::checkbox('categories[]', $category->id, !!old('categories[]'), ['class' => 'category-checkbox form-check-input', 'data-name' => $category->name, 'id' => 'category-name-'. $loop->iteration]) }}
+          {{ Form::label('category-name-'. $loop->iteration, $category->name, ['class' => 'category-name', 'id' => 'category-name-'. $category->name]) }}
+        </li>
+        @endforeach
+      </ul>
+      @else
       <div class="category-form form-control text-secondary @if($errors->has('categories') or $errors->has('new-categories')) is-invalid @endif">
         @if(!!old('categories'))
         @foreach (old('categories') as $categoryId)
@@ -32,6 +45,7 @@
         </li>
         @endforeach
       </ul>
+      @endif
     </div>
     <div class="w-50 mt-4">
       {{ Form::label('title', 'タイトル', ['class' => 'form-label h5']) }}

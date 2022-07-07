@@ -6,7 +6,7 @@
     <img src="https://icongr.am/fontawesome/users.svg?size=140&color=5f5f5f" class="w-auto" alt="チームアイコン">
     <div class="col d-flex align-items-center display-3">{{ $team->name }}</div>
     <div class="col gap-3 d-flex align-items-end justify-content-end">
-      <a href="{{ route('invite.form') }}" type="button" class="btn btn-warning btn-lg col-4">
+      <a href="@if(Auth::id() === 1)@else{{ route('invite.form') }}@endif" type="button" class="btn btn-warning btn-lg col-4 @if(Auth::id() === 1) disabled @endif">
         <img src="https://icongr.am/fontawesome/user-plus.svg?size=30&color=currentColor" alt="メンバー追加アイコン">
         メンバー招待
       </a>

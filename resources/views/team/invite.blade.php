@@ -8,6 +8,16 @@
   {{ Form::open(['route' => 'invite.mail', 'method' => 'POST', 'class' => 'tm-5']) }}
     <div class="add-members w-50 mt-4">
       {{ Form::label('email', 'ユーザー招待', ['class' => 'form-label h5']) }}
+      @if(Auth::id() === 1)
+      <div class="row">
+        <span class="text-danger">ゲストモードではご利用になれません</span>
+      </div>
+      {{ Form::email('emails[]',
+                     null,
+                     $errors->has('emails') ? ['class' => 'email-form form-control mt-2 is-invalid', 'id' => 'email0', 'placeholder' => '招待するユーザーのメールアドレスを入力', 'disabled' => true]
+                                             : ['class' => 'email-form form-control mt-2', 'id' => 'email0', 'placeholder' => '招待するユーザーのメールアドレスを入力', 'disabled' => true])
+      }}
+      @else
       @if(!!old('emails'))
       @foreach(old('emails') as $email)
       {{ Form::email('emails[]',
@@ -24,6 +34,7 @@
       }}
       @endif
       <span class="invalid-feedback message-email">{{ $errors->first('emails') }}</span>
+      @endif
     </div>
     <div class="mt-2">
       {{ Form::button('<img src="https://icongr.am/material/plus.svg?size=30&color=ffffff" alt="招待メンバー追加">',

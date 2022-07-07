@@ -14,6 +14,27 @@
         <a class="navbar-brand fs-3" href="{{ route('mypage') }}">Tempest</a>
         @guest
         @else
+        @if(Auth::id() === 1)
+        <div class="user-head col-1 offset-10 text-white">
+          <div class="dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown">
+            <img src="https://icongr.am/fontawesome/user-circle.svg?size=30&color=ffffff" class="w-auto" alt="ユーザーアイコン">
+            {{ Auth::user()->name }}
+          </div>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="{{ route('mypage') }}">ゲストマイページ</a></li>
+            <li>
+              <a class="dropdown-item" href="{{ route('logout') }}"
+                 onclick="event.preventDefault();
+                 document.getElementById('logout-form').submit();">
+                 ログイン
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+              </form>
+            </li>
+          </ul>
+        </div>
+        @else
         <div class="user-head col-1 offset-10 text-white">
           <div class="dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown">
             <img src="https://icongr.am/fontawesome/user-circle.svg?size=30&color=ffffff" class="w-auto" alt="ユーザーアイコン">
@@ -33,6 +54,7 @@
             </li>
           </ul>
         </div>
+        @endif
         @endguest
       </div>
     </header>
