@@ -13,7 +13,7 @@
     <div class="h1">チーム</div>
   </div>
   <div class="row row-cols-1 row-cols-md-4 mb-4">
-    @if($teams)
+    @if(! $teams->isEmpty())
     @foreach($teams as $team)
     <div class="col mb-4">
       <div class="card p-3">
@@ -32,8 +32,8 @@
     </div>
     @endforeach
     @else
-    <div class="card">
-      <div class="card-body">
+    <div class="card bg-info">
+      <div class="card-body text-white">
         参加しているチームがありません
       </div>
     </div>
@@ -43,7 +43,7 @@
     <div class="h1">記事</div>
   </div>
   <div class="row row-cols-1 row-cols-md-5">
-    @if($articles)
+    @if(! $articles->isEmpty())
     @foreach($articles as $article)
     <div class="col-1 mb-4">
       <div class="card pt-4">
@@ -69,8 +69,8 @@
     </div>
     @endforeach
     @else
-    <div class="card">
-      <div class="card-body">
+    <div class="card bg-info">
+      <div class="card-body text-white">
         書いた記事がありません
       </div>
     </div>

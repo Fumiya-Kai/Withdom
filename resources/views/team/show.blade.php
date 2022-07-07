@@ -31,6 +31,7 @@
     <div class="h1">記事</div>
   </div>
   <div class="row row-cols-1 row-cols-md-5 mt-5">
+    @if(! $articles->isEmpty())
     @foreach($articles as $article)
     <div class="col-1 mb-4">
       <div class="card pt-4">
@@ -55,6 +56,13 @@
       </div>
     </div>
     @endforeach
+    @else
+    <div class="card bg-info">
+      <div class="card-body text-white">
+        記事がありません
+      </div>
+    </div>
+    @endif
   </div>
   <div class="row">
     {{ $articles->appends(request()->input())->links('pagination::bootstrap-5') }}
