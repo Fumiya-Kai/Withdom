@@ -18,7 +18,11 @@
       <ul class="category-list list-group rounded-0">
         @foreach($categories as $category)
         <li class="category-item list-group-item">
-          {{ Form::checkbox('categories[]', $category->id, !!old('categories[]'), ['class' => 'category-checkbox form-check-input', 'data-name' => $category->name, 'id' => 'category-name-'. $loop->iteration]) }}
+          @if ($article->categories->pluck('id')->contains($category->id))
+          {{ Form::checkbox('categories[]', $category->id, true, ['class' => 'category-checkbox form-check-input', 'data-name' => $category->name, 'id' => 'category-name-'. $loop->iteration]) }}
+          @else
+          {{ Form::checkbox('categories[]', $category->id, false, ['class' => 'category-checkbox form-check-input', 'data-name' => $category->name, 'id' => 'category-name-'. $loop->iteration]) }}
+          @endif
           {{ Form::label('category-name-'. $loop->iteration, $category->name, ['class' => 'category-name', 'id' => 'category-name-'. $category->name]) }}
         </li>
         @endforeach
