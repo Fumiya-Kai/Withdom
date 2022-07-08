@@ -7,6 +7,7 @@
     <meta name="description" content="学んだことのアウトプット、チームでの共有が可能" />
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <script src="{{ mix('js/common.js') }}"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   </head>
   <body>
     <header class="navbar fixed-top navbar-dark bg-primary">
