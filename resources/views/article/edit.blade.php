@@ -114,6 +114,9 @@
   {{ Form::close() }}
 </div>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/darcula.min.css">
+<script type="text/javascript" defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 <script src="{{ mix('js/comboBox.js') }}"></script>
 <script src="{{ mix('js/editor.js') }}"></script>
 
