@@ -8,12 +8,10 @@
       <a href="{{ route('team.show', $article->team_id) }}" class="btn btn-secondary w-75">チームページへ</a>
     </div>
   </div>
-  <div class="card mt-3">
+  <div class="card mt-3 p-5">
     <h1 class="display-3">{{ $article->title }}</h1>
     <p class="h1 text-secondary">{{ $article->abstract }}</p>
-    <div class="article-content h3 mt-5">
-      {{ $article->content }}
-    </div>
+    <div class="article-content h3 mt-5">{{ $article->content }}</div>
   </div>
 </div>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/darcula.min.css">

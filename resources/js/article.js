@@ -26,7 +26,10 @@ $(function(){
 
   let markdownData = $('.article-content').text();
   let compiledMarkdown = marked(markdownData);
-  let html = sanitizeHtml(compiledMarkdown)
+  let html =sanitizeHtml(compiledMarkdown, {
+    allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'font' ]),
+    allowedAttributes: false
+  });
   $('.article-content').text('');
   $('.article-content').html(html);
   let div = $('.article-content').html();

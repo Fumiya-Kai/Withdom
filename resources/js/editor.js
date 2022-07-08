@@ -38,6 +38,9 @@ $(function(){
     }
   });
 
+  //読み込み時のコンパイル(編集時)
+  compile($('.article-content'));
+
   // テキストエリア入力時の機能
   $('.article-content').on('input', function(){
 
@@ -46,8 +49,17 @@ $(function(){
     let height = $(this).get(0).scrollHeight;
     $(this).innerHeight(height);
 
+    compile($(this));
+  });
+
+  var offcanvasElementList = [].slice.call($('.offcanvas'));
+  var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
+    return new bootstrap.Offcanvas(offcanvasEl)
+  });
+
+  function compile(elem) {
     // マークダウンのコンパイル機能
-    let compiledMarkdown = marked($(this).val());
+    let compiledMarkdown = marked(elem.val());
     let html =sanitizeHtml(compiledMarkdown, {
       allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'font' ]),
       allowedAttributes: false
@@ -58,10 +70,5 @@ $(function(){
     let div=$('.preview').html();
     MathJax.Hub.Configured();
     MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-  });
-
-  var offcanvasElementList = [].slice.call($('.offcanvas'));
-  var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
-    return new bootstrap.Offcanvas(offcanvasEl)
-  });
+  }
 })
