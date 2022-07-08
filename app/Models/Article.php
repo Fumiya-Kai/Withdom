@@ -52,8 +52,29 @@ class Article extends Model
 
         DB::transaction(function () use ($newArticleInput, $categories) {
             $this->create($newArticleInput)
-             ->categories()
-             ->sync($categories);
+                 ->categories()
+                 ->sync($categories);
+        });
+    }
+
+    public function updateArticle($articleId, $articleInput, $newCategoryIds = null, $teamId)
+    {
+        $articleInput['user_id'] = Auth::id();
+        $articleInput['team_id'] = $teamId;
+
+        if(!array_key_exists('categories', $articleInput)) {
+            $articleInput['categories'] = $newCategoryIds;
+        } elseif($newCategoryIds) {
+            $articleInput['categories'] = array_merge($articleInput['categories'], $newCategoryIds);
+        }
+
+        $categories = $articleInput['categories'];
+        unset($articleInput['categories']);
+
+        DB::transaction(function () use ($articleId, $articleInput, $categories) {
+            $article = $this->find($articleId);
+            $article->fill($articleInput)->save();
+            $article->categories()->sync($categories);
         });
     }
 
