@@ -13,6 +13,30 @@
     <p class="h1 text-secondary">{{ $article->abstract }}</p>
     <div class="article-content h3 mt-5">{{ $article->content }}</div>
   </div>
+  <div class="card p-5 mt-4">
+    <h3 class="fs-3 fw-bold border-bottom">コメント</h3>
+    <div class="w-auto mt-3">
+      <img src="https://icongr.am/fontawesome/user.svg?size=30&color=70e6a9" class="w-auto" alt="ユーザーアイコン">
+      <span class="h5">username</span>
+      <div class="fs-4 mt-2 pb-3 border-bottom">{{ $article->abstract }}</div>
+    </div>
+    <div class="w-auto mt-3">
+      <img src="https://icongr.am/fontawesome/user.svg?size=30&color=70e6a9" class="w-auto" alt="ユーザーアイコン">
+      <span class="h5">username</span>
+      <div class="fs-4 mt-2 pb-3 border-bottom">{{ $article->abstract }}</div>
+    </div>
+    {{ Form::open(['route' => 'article.store', 'method' => 'POST', 'class' => 'mt-5']) }}
+      {!! Form::label('comment', 'コメントする', ['class' => 'form-label fs-5']) !!}
+      {{ Form::textarea('comment',
+                        null,
+                        $errors->has('comment') ? ['class' => 'form-control is-invalid', 'id' => 'comment', 'placeholder' => 'コメントを入力してください']
+                                                : ['class' => 'form-control', 'id' => 'comment', 'placeholder' => 'コメントを入力してください'])
+      }}
+      <div class="row mt-3">
+        {{ Form::submit('投稿', ['class' => 'submit btn btn-warning offset-10 col-1']) }}
+      </div>
+    {{ Form::close() }}
+  </div>
 </div>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/darcula.min.css">
 <script type="text/javascript" defer
