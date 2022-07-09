@@ -25,15 +25,15 @@
       <span class="h5">username</span>
       <div class="fs-4 mt-2 pb-3 border-bottom">{{ $article->abstract }}</div>
     </div>
-    {{ Form::open(['route' => 'comment.store', 'method' => 'POST', 'class' => 'mt-5']) }}
+    {{ Form::open(['class' => 'comment-form mt-5']) }}
       {!! Form::label('comment', 'コメントする', ['class' => 'form-label fs-5']) !!}
-      {{ Form::textarea('comment',
+      {{ Form::textarea('content',
                         null,
                         $errors->has('comment') ? ['class' => 'form-control is-invalid', 'id' => 'comment', 'placeholder' => 'コメントを入力してください']
                                                 : ['class' => 'form-control', 'id' => 'comment', 'placeholder' => 'コメントを入力してください'])
       }}
       <div class="row mt-3">
-        {{ Form::submit('投稿', ['class' => 'submit btn btn-warning offset-10 col-1']) }}
+        {{ Form::button('投稿', ['class' => 'comment-btn submit btn btn-warning offset-10 col-1', 'data-article-id' => $article->id]) }}
       </div>
     {{ Form::close() }}
   </div>
