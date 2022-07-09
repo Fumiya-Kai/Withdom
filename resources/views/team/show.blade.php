@@ -20,7 +20,7 @@
     <div class="h1 col-5">メンバー</div>
   </div>
   <div class="row border-bottom mt-3">
-    @foreach($users as $user)
+    @foreach($team->users as $user)
     <div class="badge rounded-pill bg-secondary bg-opacity-25 w-auto text-dark py-2 px-3 mb-3 me-1">
       <img src="@if($user->avatar){{ $user->avatar }}@else https://icongr.am/fontawesome/user.svg?size=30&color=545454 @endif" class="w-auto" alt="ユーザーアイコン">
       <span class="h5">{{ $user->name }}</span>

@@ -23,9 +23,8 @@ class TeamController extends Controller
     public function show($id)
     {
         $articles = $this->article->getByTeamId($id);
-        $users = $this->team->getMembers($id);
         $team = $this->team->find($id);
-        return view('team.show', compact('articles', 'users', 'team'));
+        return view('team.show', compact('articles', 'team'));
     }
 
     public function create()
