@@ -35,4 +35,35 @@ $(function(){
   let div = $('.article-content').html();
   MathJax.Hub.Configured();
   MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+
+  $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+    }
+  });
+
+  $('.comment-btn').on('click', function(){
+    let clickedDom = this;
+    $.ajax(location.origin + '/article/' + $(clickedDom).data('articleId') + '/comment',
+           {
+             type: 'post',
+             data: {
+               content: $('#comment').val()
+             }
+           })
+    .done(function(data){
+      let newComment =
+      `
+      <div class="w-auto mt-3">
+        <img src="https://icongr.am/fontawesome/user.svg?size=30&color=70e6a9" class="w-auto" alt="ユーザーアイコン">
+        <span class="h5">${data.user}</span>
+        <div class="fs-4 mt-2 pb-3 border-bottom">${data.content}</div>
+      </div>
+      `
+      $('.comment-form').before(newComment)
+    })
+    .fail((error) => {
+      console.log(error.statusText);
+    });
+  })
 })

@@ -26,6 +26,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/invite', [App\Http\Controllers\User\TeamController::class, 'inviteToExistingTeam'])->middleware('prevent.guest')->name('invite.mail');
 });
 
+Route::post('article/{articleId}/comment', [App\Http\Controllers\User\Api\ArticleController::class, 'comment'])->name('comment');
+
 Auth::routes(['register' => false]);
 Route::get('/login_invited', [App\Http\Controllers\Auth\LoginController::class, 'showInvitedLogin'])->name('login.invited');
 Route::get('/register_invited', [App\Http\Controllers\Auth\RegisterController::class, 'showInvitedRegister'])->name('register.invited');
