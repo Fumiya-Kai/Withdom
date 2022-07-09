@@ -25,7 +25,7 @@
       <span class="h5">username</span>
       <div class="fs-4 mt-2 pb-3 border-bottom">{{ $article->abstract }}</div>
     </div>
-    {{ Form::open(['route' => 'article.store', 'method' => 'POST', 'class' => 'mt-5']) }}
+    {{ Form::open(['route' => 'comment.store', 'method' => 'POST', 'class' => 'mt-5']) }}
       {!! Form::label('comment', 'コメントする', ['class' => 'form-label fs-5']) !!}
       {{ Form::textarea('comment',
                         null,
