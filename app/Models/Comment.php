@@ -16,12 +16,18 @@ class Comment extends Model
         'article_id',
     ];
 
-    public function users()
+    public function saveNewComment($input)
+    {
+        $this->fill($input)->save();
+        return $this;
+    }
+
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function articles()
+    public function article()
     {
         return $this->belongsTo(Article::class, 'article_id');
     }
