@@ -22,6 +22,13 @@ class Comment extends Model
         return $this;
     }
 
+    public function getComments($articleId)
+    {
+        return $this->where('article_id', $articleId)
+                    ->with('user')
+                    ->get(['content', 'created_at', 'user_id']);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

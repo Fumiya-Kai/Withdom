@@ -15,7 +15,7 @@
   </div>
   <div class="card p-5 mt-4">
     <h3 class="fs-3 fw-bold border-bottom">コメント</h3>
-    @foreach($article->comments as $comment)
+    @foreach($comments as $comment)
     <div class="w-auto mt-3">
       <img src="https://icongr.am/fontawesome/user.svg?size=30&color=70e6a9" class="w-auto" alt="ユーザーアイコン">
       <span class="h5">{{ $comment->user->name }}</span>
