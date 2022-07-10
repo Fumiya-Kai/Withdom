@@ -22,35 +22,12 @@ class ArticleController extends Controller
         $this->category = $category;
     }
 
-    public function edit($id)
-    {
-        $article = $this->article->find($id);
-        $categories = $this->category->all();
-        return view('article.edit', compact('article', 'categories'));
-    }
-
     public function create(Request $request)
     {
         $categories = $this->category->all();
         $teamIdData = $request->session()->get('team_id');
         $teamId = $teamIdData['id'];
         return view('article.create', compact('categories', 'teamId'));
-    }
-
-    public function update(ArticleRequest $request, $articleId)
-    {
-        $input = $request->validated();
-        $teamId = $request->session()->get('team_id');
-        if(isset($input['new-categories'])) {
-            $newCategoriesInput = $input['new-categories'];
-            unset($input['new-categories']);
-            $newCategoryIds = $this->category->saveNewAndGetIds($newCategoriesInput);
-        } else {
-            $newCategoryIds = null;
-        }
-        $this->article->updateArticle($articleId, $input, $newCategoryIds, $teamId['id']);
-
-        return redirect()->route('article.show', $articleId);
     }
 
     public function store(ArticleRequest $request)
@@ -68,6 +45,29 @@ class ArticleController extends Controller
         $this->article->saveNewArticle($newArticleInput, $newCategoryIds, $teamId['id']);
 
         return redirect()->route('team.show', $teamId['id']);
+    }
+
+    public function edit($id)
+    {
+        $article = $this->article->find($id);
+        $categories = $this->category->all();
+        return view('article.edit', compact('article', 'categories'));
+    }
+
+    public function update(ArticleRequest $request, $articleId)
+    {
+        $input = $request->validated();
+        $teamId = $request->session()->get('team_id');
+        if(isset($input['new-categories'])) {
+            $newCategoriesInput = $input['new-categories'];
+            unset($input['new-categories']);
+            $newCategoryIds = $this->category->saveNewAndGetIds($newCategoriesInput);
+        } else {
+            $newCategoryIds = null;
+        }
+        $this->article->updateArticle($articleId, $input, $newCategoryIds, $teamId['id']);
+
+        return redirect()->route('article.show', $articleId);
     }
 
     public function show($id)

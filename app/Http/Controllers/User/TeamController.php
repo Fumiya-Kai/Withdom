@@ -20,13 +20,6 @@ class TeamController extends Controller
         $this->article = $article;
     }
 
-    public function show($id)
-    {
-        $articles = $this->article->getByTeamId($id);
-        $team = $this->team->find($id);
-        return view('team.show', compact('articles', 'team'));
-    }
-
     public function create()
     {
         return view('team.create');
@@ -40,6 +33,13 @@ class TeamController extends Controller
             $this->invite($input['emails'], Auth::user()->name, $input['name'], $teamId);
         }
         return redirect()->route('mypage');
+    }
+
+    public function show($id)
+    {
+        $articles = $this->article->getByTeamId($id);
+        $team = $this->team->find($id);
+        return view('team.show', compact('articles', 'team'));
     }
 
     public function showInviteForm(Request $request)
