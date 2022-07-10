@@ -26,9 +26,9 @@
       {!! Form::label('comment', 'コメントする', ['class' => 'form-label fs-5']) !!}
       {{ Form::textarea('content',
                         null,
-                        $errors->has('comment') ? ['class' => 'form-control is-invalid', 'id' => 'comment', 'placeholder' => 'コメントを入力してください']
-                                                : ['class' => 'form-control', 'id' => 'comment', 'placeholder' => 'コメントを入力してください'])
+                        ['class' => 'form-control', 'id' => 'comment', 'placeholder' => 'コメントを入力してください'])
       }}
+      <span class="invalid-feedback"></span>
       <div class="row mt-3">
         {{ Form::button('投稿', ['class' => 'comment-btn submit btn btn-warning offset-10 col-1', 'data-article-id' => $article->id]) }}
       </div>

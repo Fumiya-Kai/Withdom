@@ -52,6 +52,11 @@ $(function(){
              }
            })
     .done(function(data){
+      $('.submit').css({
+        pointerEvents : 'auto',
+        opacity : '1'
+      });
+      $('#comment').removeClass('is-invalid');
       let newComment =
       `
       <div class="w-auto mt-3">
@@ -60,10 +65,16 @@ $(function(){
         <div class="fs-4 mt-2 pb-3 border-bottom">${data.content}</div>
       </div>
       `
-      $('.comment-form').before(newComment)
+      $('.comment-form').before(newComment);
+      $('#comment').val('');
     })
     .fail((error) => {
-      console.log(error.statusText);
+      $('.submit').css({
+        pointerEvents : 'auto',
+        opacity : '1'
+      });
+      $('#comment').addClass('is-invalid');
+      $('.invalid-feedback').text(error.responseJSON.message);
     });
   })
 })

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,9 +20,9 @@ class ArticleController extends Controller
         $this->user = $user;
     }
 
-    public function comment($articleId, Request $request)
+    public function comment($articleId, CommentRequest $request)
     {
-        $input = $request->all();
+        $input = $request->validated();
         $input['user_id'] = Auth::id();
         $input['article_id'] = $articleId;
         $newComment = $this->comment->saveNewComment($input);
