@@ -22,4 +22,5 @@ mix.js('resources/js/app.js', 'public/js')
    .sourceMaps()
    .autoload({
      "jquery": ['$', 'window.jQuery'],
-   });
+   })
+   .extract(['jquery']);
