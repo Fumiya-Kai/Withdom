@@ -6,6 +6,8 @@
     <title>Withdom</title>
     <meta name="description" content="学んだことのアウトプット、チームでの共有が可能" />
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <script src="{{ mix('js/vendor.js') }}"></script>
+    <script src="{{ mix('js/manifest.js') }}"></script>
     <script src="{{ mix('js/common.js') }}"></script>
   </head>
   <body>
