@@ -15,7 +15,7 @@
         @guest
         @else
         @if(Auth::id() === 1)
-        <div class="user-head col-1 offset-10 text-white">
+        <div class="user-head col-1 text-white">
           <div class="dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown">
             <img src="https://icongr.am/fontawesome/user-circle.svg?size=30&color=ffffff" class="w-auto" alt="ユーザーアイコン">
             {{ Auth::user()->name }}
@@ -35,7 +35,7 @@
           </ul>
         </div>
         @else
-        <div class="user-head col-1 offset-10 text-white">
+        <div class="user-head col-1 text-white">
           <div class="dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown">
             <img src="https://icongr.am/fontawesome/user-circle.svg?size=30&color=ffffff" class="w-auto" alt="ユーザーアイコン">
             {{ Auth::user()->name }}
