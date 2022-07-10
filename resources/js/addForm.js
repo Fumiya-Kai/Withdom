@@ -4,9 +4,17 @@ $(function(){
   $('.btn-add-form').on('click', function () {
     let formMember =
     `
-    <input type="email" id="email${memberCount}" name="emails[]" class="form-first-member form-control mt-2" placeholder="招待するユーザーのメールアドレスを入力">
+    <input type="email" id="email${memberCount}" name="emails[]" class="email-form form-control mt-2" placeholder="招待するユーザーのメールアドレスを入力">
     `
     $('.message-email').before(formMember);
     memberCount++;
   });
+
+  $('.submit').on('click', function () {
+    $('.email-form').each(function (index, elem) {
+      if($(elem).val() === '') {
+        $(elem).remove();
+      }
+    })
+  })
 })
