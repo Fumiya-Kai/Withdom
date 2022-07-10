@@ -19,6 +19,7 @@
     <div class="w-auto mt-3">
       <img src="https://icongr.am/fontawesome/user.svg?size=30&color=70e6a9" class="w-auto" alt="ユーザーアイコン">
       <span class="h5">{{ $comment->user->name }}</span>
+      <p class="text-secondary">{{ $comment->created_at->format('Y-m-d H:i') }}</p>
       <div class="fs-4 mt-2 pb-3 border-bottom">{{ $comment->content }}</div>
     </div>
     @endforeach
