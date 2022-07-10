@@ -26,14 +26,14 @@ class Article extends Model
     {
         return $this->where('user_id', $id)
                     ->latest()
-                    ->paginate(self::ARTICLES_PER_PAGE);
+                    ->paginate(self::ARTICLES_PER_PAGE, ['id', 'title', 'abstract']);
     }
 
     public function getByTeamId($id)
     {
         return $this->where('team_id', $id)
                     ->latest()
-                    ->paginate(self::ARTICLES_PER_PAGE);
+                    ->paginate(self::ARTICLES_PER_PAGE, ['id', 'title', 'abstract']);
     }
 
     public function saveNewArticle($newArticleInput, $newCategoryIds = null, $teamId)
