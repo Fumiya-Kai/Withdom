@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Tempest</title>
+    <title>Withdom</title>
     <meta name="description" content="学んだことのアウトプット、チームでの共有が可能" />
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <script src="{{ mix('js/common.js') }}"></script>
@@ -11,7 +11,7 @@
   <body>
     <header class="navbar fixed-top navbar-dark bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand fs-3" href="{{ route('mypage') }}">Tempest</a>
+        <a class="navbar-brand fs-3" href="{{ route('mypage') }}">Withdom</a>
         @guest
         @else
         @if(Auth::id() === 1)
