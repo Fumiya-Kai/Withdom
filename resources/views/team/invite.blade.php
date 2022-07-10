@@ -15,7 +15,7 @@
       {{ Form::email('emails[]',
                      null,
                      $errors->has('emails') ? ['class' => 'email-form form-control mt-2 is-invalid', 'id' => 'email0', 'placeholder' => '招待するユーザーのメールアドレスを入力', 'disabled' => true]
-                                             : ['class' => 'email-form form-control mt-2', 'id' => 'email0', 'placeholder' => '招待するユーザーのメールアドレスを入力', 'disabled' => true])
+                                            : ['class' => 'email-form form-control mt-2', 'id' => 'email0', 'placeholder' => '招待するユーザーのメールアドレスを入力', 'disabled' => true])
       }}
       @else
       @if(!!old('emails'))
@@ -23,14 +23,14 @@
       {{ Form::email('emails[]',
                      $email,
                      $errors->has('emails') ? ['class' => 'email-form form-control mt-2 is-invalid', 'id' => 'email'. $loop->index, 'placeholder' => '招待するユーザーのメールアドレスを入力']
-                                             : ['class' => 'email-form form-control mt-2', 'id' => 'email'. $loop->index, 'placeholder' => '招待するユーザーのメールアドレスを入力'])
+                                            : ['class' => 'email-form form-control mt-2', 'id' => 'email'. $loop->index, 'placeholder' => '招待するユーザーのメールアドレスを入力'])
       }}
       @endforeach
       @else
       {{ Form::email('emails[]',
                      null,
                      $errors->has('emails') ? ['class' => 'email-form form-control is-invalid', 'id' => 'email0', 'placeholder' => '招待するユーザーのメールアドレスを入力']
-                                             : ['class' => 'email-form form-control', 'id' => 'email0', 'placeholder' => '招待するユーザーのメールアドレスを入力'])
+                                            : ['class' => 'email-form form-control', 'id' => 'email0', 'placeholder' => '招待するユーザーのメールアドレスを入力'])
       }}
       @endif
       <span class="invalid-feedback message-email">{{ $errors->first('emails') }}</span>
