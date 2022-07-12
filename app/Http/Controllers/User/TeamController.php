@@ -29,7 +29,7 @@ class TeamController extends Controller
     {
         $input = $request->validated();
         $teamId = $this->team->createTeamAndGetId($input, Auth::id());
-        if($input['emails'][0] !== null) {
+        if(isset($input['emails']) && $input['emails'][0] !== null) {
             $this->invite($input['emails'], Auth::user()->name, $input['name'], $teamId);
         }
         return redirect()->route('mypage');
