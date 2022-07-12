@@ -12,6 +12,9 @@
   <div class="row mt-5">
     <div class="h1">チーム</div>
   </div>
+  @if(Auth::id() === 1)
+  <span class="text-danger">ゲストのチームは定期的に削除されます</span>
+  @endif
   <div class="row row-cols-1 row-cols-md-4 mb-4">
     @if(! $teams->isEmpty())
     @foreach($teams as $team)
@@ -42,6 +45,9 @@
   <div class="row">
     <div class="h1">記事</div>
   </div>
+  @if(Auth::id() === 1)
+  <span class="text-danger">ゲストの記事は定期的に削除されます</span>
+  @endif
   <div class="row row-cols-1 row-cols-md-5">
     @if(! $articles->isEmpty())
     @foreach($articles as $article)
