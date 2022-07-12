@@ -27,7 +27,7 @@ class ArticleController extends Controller
         $input['article_id'] = $articleId;
         $newComment = $this->comment->saveNewComment($input);
         $commentData = [
-            'content' => $newComment->content,
+            'content' => htmlspecialchars($newComment->content),
             'user' => $this->user->find($newComment->user_id)->name,
         ];
         return response()->json($commentData);
