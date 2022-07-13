@@ -3,8 +3,10 @@
 @section('content')
 <div class="container mt-5 py-5">
   <div class="row">
-    <div class="col-2 offset-10">
+    <div class="col-2 offset-8 d-flex justify-content-end">
       <a href="{{ route('article.edit', $article->id) }}" class="btn btn-warning w-75">編集</a>
+    </div>
+    <div class="col-2">
       <a href="{{ route('team.show', $article->team_id) }}" class="btn btn-secondary w-75">チームページへ</a>
     </div>
   </div>
