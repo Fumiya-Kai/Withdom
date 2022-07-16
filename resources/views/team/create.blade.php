@@ -5,8 +5,8 @@
   <div class="row">
     <div class="display-6">チーム作成</div>
   </div>
-  {{ Form::open(['route' => 'team.store', 'method' => 'POST', 'class' => 'mt-5']) }}
-    <div class="w-50">
+  {{ Form::open(['route' => 'team.store', 'method' => 'POST', 'class' => 'mt-5 col']) }}
+    <div class="w-md-50">
       {{ Form::label('name', 'チーム名', ['class' => 'form-label h5']) }}
       {{ Form::text('name',
                     old('name'),
@@ -15,7 +15,7 @@
       }}
       <span class="invalid-feedback">{{ $errors->first('name') }}</span>
     </div>
-    <div class="w-50 mt-4">
+    <div class="w-md-50 mt-4">
       {{ Form::label('description', '説明', ['class' => 'form-label h5']) }}
       {{ Form::textarea('description',
                         old('description'),
@@ -24,7 +24,7 @@
       }}
       <span class="invalid-feedback">{{ $errors->first('description') }}</span>
     </div>
-    <div class="add-members w-50 mt-4">
+    <div class="add-members w-md-50 mt-4">
       {{ Form::label('email', 'ユーザー招待', ['class' => 'form-label h5']) }}
       @if(Auth::id() === 1)
       <div class="row">
@@ -60,8 +60,8 @@
       }}
     </div>
     <div class="row mt-3">
-      <a href="{{ route('mypage') }}" class="btn btn-secondary col-1 offset-4">戻る</a>
-      {{ Form::submit('作成', ['class' => 'submit btn btn-warning col-1 ms-3']) }}
+      <a href="{{ route('mypage') }}" class="btn btn-secondary col-2 col-md-1 offset-7 offset-md-4">戻る</a>
+      {{ Form::submit('作成', ['class' => 'submit btn btn-warning col-2 col-md-1 ms-3']) }}
     </div>
   {{ Form::close() }}
 </div>

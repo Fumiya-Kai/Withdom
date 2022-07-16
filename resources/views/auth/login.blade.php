@@ -58,13 +58,14 @@
                             <div class="col-md-8 offset-md-4">
                                 {{ Form::submit('ログイン', ['class' => 'submit btn btn-primary']) }}
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        パスワードを忘れた
-                                    </a>
-                                @endif
-
                                 <a href="{{ route('login.guest') }}" class="btn btn-outline-dark ms-4">ゲストログイン</a>
+                            </div>
+                            <div class="col-md-8 offset-md-4">
+                                @if (Route::has('password.request'))
+                                <a class="btn btn-link py-2 px-0" href="{{ route('password.request') }}">
+                                    パスワードを忘れた
+                                </a>
+                                @endif
                             </div>
                         </div>
                     {{ Form::close() }}

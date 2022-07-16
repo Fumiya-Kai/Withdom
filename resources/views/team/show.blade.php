@@ -2,15 +2,15 @@
 
 @section('content')
 <div class="container mt-5 py-5">
-  <div class="row pb-3 border-bottom border-dark">
-    <img src="https://icongr.am/fontawesome/users.svg?size=140&color=5f5f5f" class="w-auto" alt="チームアイコン">
+  <div class="row pb-3 border-bottom border-dark mx-1 mx-md-0">
+    <img src="https://icongr.am/fontawesome/users.svg?size=120&color=5f5f5f" class="w-auto" alt="チームアイコン">
     <div class="col d-flex align-items-center display-3">{{ $team->name }}</div>
-    <div class="col gap-3 d-flex align-items-end justify-content-end">
-      <a href="@if(Auth::id() === 1)@else{{ route('invite.form') }}@endif" type="button" class="btn btn-warning btn-lg col-4 @if(Auth::id() === 1) disabled @endif">
+    <div class="col-md-5 gap-3 d-flex align-items-end justify-content-start justify-content-md-end">
+      <a href="@if(Auth::id() === 1)@else{{ route('invite.form') }}@endif" type="button" class="btn btn-warning btn col-6 col-md-4 @if(Auth::id() === 1) disabled @endif">
         <img src="https://icongr.am/fontawesome/user-plus.svg?size=30&color=currentColor" alt="メンバー追加アイコン">
         メンバー招待
       </a>
-      <a href="{{ route('article.create') }}" type="button" class="btn btn-warning btn-lg col-4">
+      <a href="{{ route('article.create') }}" type="button" class="btn btn-warning col-5 col-md-4">
         <img src="https://icongr.am/material/pencil-plus.svg?size=30&color=currentColor" alt="記事追加アイコン">
         記事作成
       </a>
@@ -19,7 +19,7 @@
   <div class="row mt-5">
     <div class="h1 col-5">メンバー</div>
   </div>
-  <div class="row border-bottom mt-3">
+  <div class="row border-bottom mt-3 mx-1 mx-md-0">
     @foreach($team->users as $user)
     <div class="badge rounded-pill bg-secondary bg-opacity-25 w-auto text-dark py-2 px-3 mb-3 me-1">
       <img src="@if($user->avatar){{ $user->avatar }}@else https://icongr.am/fontawesome/user.svg?size=30&color=545454 @endif" class="w-auto" alt="ユーザーアイコン">
@@ -36,7 +36,7 @@
   <div class="row row-cols-1 row-cols-md-5 mt-5">
     @if(! $articles->isEmpty())
     @foreach($articles as $article)
-    <div class="col-1 mb-4">
+    <div class="col mb-4">
       <div class="card pt-4">
         <a href="{{ route('article.show', $article->id) }}" class="text-reset text-decoration-none">
           <div class="d-flex align-items-center justify-content-center mb-3">

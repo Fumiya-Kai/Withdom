@@ -3,9 +3,9 @@
 @section('content')
 <div class="container mt-5 py-5">
   <div class="row pb-3 border-bottom border-dark">
-    <img src="https://icongr.am/fontawesome/user-circle.svg?size=140&color=70e6a9" class="w-auto" alt="ユーザーアイコン">
+    <img src="https://icongr.am/fontawesome/user-circle.svg?size=100&color=70e6a9" class="w-auto" alt="ユーザーアイコン">
     <div class="col d-flex align-items-center display-3">{{ Auth::user()->name }}</div>
-    <div class="col-4 d-flex align-items-end">
+    <div class="col d-flex align-items-end justify-content-start justify-content-md-end me-md-5 mt-3 mt-md-0">
       <a href="{{ route('team.create') }}" type="button" class="btn btn-warning btn-lg">チーム作成</a>
     </div>
   </div>
@@ -51,7 +51,7 @@
   <div class="row row-cols-1 row-cols-md-5">
     @if(! $articles->isEmpty())
     @foreach($articles as $article)
-    <div class="col-1 mb-4">
+    <div class="col mb-4">
       <div class="card pt-4">
         <a href="{{ route('article.show', $article->id) }}" class="text-reset text-decoration-none">
           <div class="d-flex align-items-center justify-content-center mb-3">
