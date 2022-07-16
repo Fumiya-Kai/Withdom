@@ -6,7 +6,7 @@
     <div class="display-6">チーム作成</div>
   </div>
   {{ Form::open(['route' => 'team.store', 'method' => 'POST', 'class' => 'mt-5 col']) }}
-    <div class="w-md-50">
+    <div class="col col-md-6">
       {{ Form::label('name', 'チーム名', ['class' => 'form-label h5']) }}
       {{ Form::text('name',
                     old('name'),
@@ -15,7 +15,7 @@
       }}
       <span class="invalid-feedback">{{ $errors->first('name') }}</span>
     </div>
-    <div class="w-md-50 mt-4">
+    <div class="col col-md-6 mt-4">
       {{ Form::label('description', '説明', ['class' => 'form-label h5']) }}
       {{ Form::textarea('description',
                         old('description'),
@@ -24,7 +24,7 @@
       }}
       <span class="invalid-feedback">{{ $errors->first('description') }}</span>
     </div>
-    <div class="add-members w-md-50 mt-4">
+    <div class="add-members col col-md-6 mt-4">
       {{ Form::label('email', 'ユーザー招待', ['class' => 'form-label h5']) }}
       @if(Auth::id() === 1)
       <div class="row">

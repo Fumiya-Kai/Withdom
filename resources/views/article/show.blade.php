@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-5 py-5">
   <div class="row">
-    <div class="col-4 col-md-2 offset-3 d-flex justify-content-end">
+    <div class="col-4 col-md-2 offset-3 offset-md-8 d-flex justify-content-end">
       <a href="{{ route('article.edit', $article->id) }}" class="btn btn-warning w-md-75">編集</a>
     </div>
     <div class="col-5 col-md-2">
