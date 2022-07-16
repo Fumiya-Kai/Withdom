@@ -6,7 +6,7 @@
     <div class="display-6">メンバー招待</div>
   </div>
   {{ Form::open(['route' => 'invite.mail', 'method' => 'POST', 'class' => 'tm-5']) }}
-    <div class="add-members w-50 mt-4">
+    <div class="add-members w-md-50 mt-4">
       {{ Form::label('email', 'ユーザー招待', ['class' => 'form-label h5']) }}
       @if(Auth::id() === 1)
       <div class="row">
@@ -42,8 +42,8 @@
       }}
     </div>
     <div class="row mt-3">
-      <a href="{{ route('team.show', $teamId) }}" class="btn btn-secondary col-1 offset-5">戻る</a>
-      {{ Form::submit('招待', ['class' => 'submit btn btn-warning col-1 ms-3']) }}
+      <a href="{{ route('team.show', $teamId) }}" class="btn btn-secondary col-2 col-md-1 offset-7 offset-md-5">戻る</a>
+      {{ Form::submit('招待', ['class' => 'submit btn btn-warning col-2 col-md-1 ms-3']) }}
     </div>
   {{ Form::close() }}
 </div>
