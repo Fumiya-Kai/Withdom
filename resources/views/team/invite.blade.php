@@ -6,7 +6,7 @@
     <div class="display-6">メンバー招待</div>
   </div>
   {{ Form::open(['route' => 'invite.mail', 'method' => 'POST', 'class' => 'tm-5']) }}
-    <div class="add-members w-md-50 mt-4">
+    <div class="add-members col col-md-6 mt-4">
       {{ Form::label('email', 'ユーザー招待', ['class' => 'form-label h5']) }}
       @if(Auth::id() === 1)
       <div class="row">

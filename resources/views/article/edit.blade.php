@@ -6,7 +6,7 @@
     <div class="display-6">記事作成</div>
   </div>
   {{ Form::open(['route' => ['article.update', $article->id], 'method' => 'PUT', 'class' => 'mt-5']) }}
-    <div class="w-md-50">
+    <div class="col col-md-6">
       {{ Form::label('category', 'カテゴリー', ['class' => 'form-label h5']) }}
       @if(Auth::id() === 1)
       <div class="category-form form-control">
@@ -63,7 +63,7 @@
       </ul>
       @endif
     </div>
-    <div class="w-md-50 mt-4">
+    <div class="col col-md-6 mt-4">
       {{ Form::label('title', 'タイトル', ['class' => 'form-label h5']) }}
       {{ Form::text('title',
                     $article->title,
@@ -72,7 +72,7 @@
       }}
       <span class="invalid-feedback">{{ $errors->first('title') }}</span>
     </div>
-    <div class="w-md-50 mt-4">
+    <div class="col col-md-6 mt-4">
       {{ Form::label('abstract', '要約', ['class' => 'form-label h5']) }}
       {{ Form::text('abstract',
                     $article->abstract,
@@ -81,7 +81,7 @@
       }}
       <span class="invalid-feedback">{{ $errors->first('abstract') }}</span>
     </div>
-    <div class="w-md-75 mt-4">
+    <div class="col col-md-9 mt-4">
       {{ Form::label('content', '本文', ['class' => 'form-label h5']) }}
       <button class="btn btn-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">? 書式</button>
       @component('components.format_offcanvas')
