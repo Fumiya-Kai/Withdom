@@ -3,10 +3,12 @@
 @section('content')
 <div class="container mt-5 py-5">
   <div class="row">
+    @if(Auth::id() == $article->user_id)
     <div class="col-4 col-md-2 offset-3 offset-md-8 d-flex justify-content-end">
       <a href="{{ route('article.edit', $article->id) }}" class="btn btn-warning w-md-75">編集</a>
     </div>
-    <div class="col-5 col-md-2">
+    @endif
+    <div class="col-5 col-md-2 @if(Auth::id() !== $article->user_id) offset-3 offset-md-9 @endif">
       <a href="{{ route('team.show', $article->team_id) }}" class="btn btn-secondary w-md-75">チームページへ</a>
     </div>
   </div>
