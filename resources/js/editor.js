@@ -14,9 +14,6 @@ $(function(){
     return false;
   });
 
-  // デフォルトのテキストエリアの高さ
-  let oldHeight = $('.article-content').innerHeight();
-
   // シンタックスハイライトの設定
   marked.setOptions({
     highlight: code => {
@@ -43,12 +40,6 @@ $(function(){
 
   // テキストエリア入力時の機能
   $('.article-content').on('input', function(){
-
-    // テキストエリアの高さが自動で変わる機能
-    $(this).innerHeight(oldHeight);
-    let height = $(this).get(0).scrollHeight;
-    $(this).innerHeight(height);
-
     compile($(this));
   });
 

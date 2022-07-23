@@ -5,7 +5,7 @@
     "/js/editor.js": "/js/editor.js",
     "/js/article.js": "/js/article.js",
     "/js/common.js": "/js/common.js",
-    "/js/vendor.js": "/js/vendor.js",
     "/js/manifest.js": "/js/manifest.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/js/vendor.js": "/js/vendor.js"
 }
