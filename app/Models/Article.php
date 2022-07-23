@@ -57,11 +57,8 @@ class Article extends Model
         });
     }
 
-    public function updateArticle($articleId, $articleInput, $newCategoryIds = null, $teamId)
+    public function updateArticle($articleId, $articleInput, $newCategoryIds = null)
     {
-        $articleInput['user_id'] = Auth::id();
-        $articleInput['team_id'] = $teamId;
-
         if(!array_key_exists('categories', $articleInput)) {
             $articleInput['categories'] = $newCategoryIds;
         } elseif($newCategoryIds) {

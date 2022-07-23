@@ -57,7 +57,6 @@ class ArticleController extends Controller
     public function update(ArticleRequest $request, $articleId)
     {
         $input = $request->validated();
-        $teamId = $request->session()->get('team_id');
         if(isset($input['new-categories'])) {
             $newCategoriesInput = $input['new-categories'];
             unset($input['new-categories']);
@@ -65,7 +64,7 @@ class ArticleController extends Controller
         } else {
             $newCategoryIds = null;
         }
-        $this->article->updateArticle($articleId, $input, $newCategoryIds, $teamId['id']);
+        $this->article->updateArticle($articleId, $input, $newCategoryIds);
 
         return redirect()->route('article.show', $articleId);
     }
