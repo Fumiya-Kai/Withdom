@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InviteRequest;
 use App\Http\Requests\TeamRequest;
+use App\Jobs\SendInvitationMail;
 use App\Mail\NewTeamInvitation;
 use App\Models\Article;
 use App\Models\Team;
@@ -65,7 +66,7 @@ class TeamController extends Controller
     private function invite($mailTo, $fromName, $teamName, $teamId)
     {
         foreach($mailTo as $address) {
-            Mail::to($address)->send( new NewTeamInvitation($fromName, $teamName, $teamId) );
+            SendInvitationMail::dispatch($address, $fromName, $teamName, $teamId);
         }
     }
 }
