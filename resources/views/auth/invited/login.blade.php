@@ -57,7 +57,7 @@
                             <div class="col-md-8 offset-md-4">
                                 {{ Form::submit('ログイン', ['class' => 'submit btn btn-primary']) }}
 
-                                <a href="{{ route('login.guest') }}" class="btn btn-outline-dark ms-4">ゲストログイン</a>
+                                <a class="btn btn-link" href="{{ route('register.invited') }}">新規登録</a>
                             </div>
                             <div class="col-md-8 offset-md-4">
                                 @if (Route::has('password.request'))
