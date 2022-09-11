@@ -57,7 +57,6 @@ class TeamController extends Controller
         $teamId = $teamIdData['id'];
         $teamName = $this->team
                          ->find($teamId)
-                         ->first()
                          ->name;
         $this->invite($input['emails'], Auth::user()->name, $teamName, $teamId);
         return redirect()->route('team.show', $teamId);
