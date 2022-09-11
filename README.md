@@ -2,7 +2,7 @@
 エンジニアとして仕事、勉強をしていくなかでアウトプットは大事だと思い、qiitaなどのような誰でも見れるようなものと別でコミュニティ内で情報を共有できるようなアプリが欲しいと考えたのでこのアプリを作成した。
 
 アプリURL
-[http://with-dom.herokuapp.com/login](http://with-dom.herokuapp.com/login)
+[http://with-dom.herokuapp.com/](http://with-dom.herokuapp.com/)
 # 主な機能
 ### チーム作成機能
 チームを作成し、メンバーを招待することで友人たちとの情報共有の場を作成できる
