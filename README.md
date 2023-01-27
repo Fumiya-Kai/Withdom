@@ -21,9 +21,3 @@ SNSと連携し新着記事を通知する機能
 - marked.js
 - highlight.js
 - Heroku
-
-# 実装案
-1. フォークする
-2. featureブランチを切る( git checkout -b feature/~~~ )
-3. 変更、コミットまでしたらpushする( git push origin feature/~~~ )
-4. プルリクエストを作成してください
